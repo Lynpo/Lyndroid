@@ -10,25 +10,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".home.MainActivity">
-<!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
--->
         </activity>
         <activity android:name=".detail.DetailActivity" />
         <activity android:name=".home.HomeActivity" />
         <activity android:name=".view.MoveViewActivity" />
         <activity android:name=".view.CustomViewActivity" />
         <activity android:name=".nestedfragments.FragmentContainerActivity">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
+        <activity
+            android:name=".activitylifecycle.TaskAActivity"
+            android:launchMode="standard" />
+        <activity
+            android:name=".activitylifecycle.TaskBActivity"
+            android:launchMode="standard" />
+        <activity android:name=".temppage.IncludeViewTest" />
+        <activity android:name=".progress.ProgressbarActivity"/>
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
 /build
 /captures
 .externalNativeBuild
-libs/
 /app/gradlew.bat
 /gradlew.bat
 /app/gradle/
+/app/local.properties

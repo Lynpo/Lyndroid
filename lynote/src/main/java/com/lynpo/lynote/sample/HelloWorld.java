@@ -1,4 +1,4 @@
-package example;
+package com.lynpo.lynote.sample;
 
 public class HelloWorld {
 

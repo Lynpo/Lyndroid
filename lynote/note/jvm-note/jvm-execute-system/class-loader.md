@@ -117,7 +117,7 @@ public class NotInitialization3 {
 
 ```
 
-接口的加载过程与类加载过程不同：接口初始化，接口中不能使用 “static{}” 语句块，但编译器会为接口生成“<clinit>()” 类构造器，用于初始化接口中定义的成员变量。
+接口的加载过程与类加载过程不同：接口初始化，接口中不能使用 “static{}” 语句块，但编译器会为接口生成“<clinit\>()” 类构造器，用于初始化接口中定义的成员变量。
 
 接口与类真正区别是以上 5 种”有且仅有”需要初始化场景中的第 3 种：一个接口在初始化时，不要求其父接口都完成了初始化，只有在真正使用到父接口的时候（如引用接口中定义的常量）才会初始化。
 
@@ -201,7 +201,7 @@ Java 性对于 C/C++ 来说是相对安全的语言。
 public static int value = 123;
 ```
 
-初始值：0， 不是 123。因为此时尚未开始执行任何 Java 方法。而把 value 赋值为 123 的 putstatic 指令是程序被编译后，存放于类构造器 <clinit>() 方法之中，所以把 value 赋值为 123 的动作将在初始化阶段才会执行。
+初始值：0， 不是 123。因为此时尚未开始执行任何 Java 方法。而把 value 赋值为 123 的 putstatic 指令是程序被编译后，存放于类构造器 <clinit\>() 方法之中，所以把 value 赋值为 123 的动作将在初始化阶段才会执行。
 
 表 基本数据类型的零值
 
@@ -244,53 +244,160 @@ public static int value = 123;
   * 如果 C 不是一个数组类型，那虚拟机将会把代表 N 的全限定名传递给 D 的类加载器去家在这个类 C。在加载过程中，由于元数据验证、字节码验证需要，有可能粗发其他相关类的家在动作，如加载这个类的父类或实现的接口。一旦这个加载过程出现任何异常，解析过程失败。
   * 如果 C 是一个数组类型，并且数组类型为对象，也就是 N 的描述符会是类似“Ljava/lang/Integer”的形式，将按照前一条规则家在数组元素类型。如果 N 的描述符如前面所假设的形式，需要加载的元素类型就是“java.lang.Integer”，接着由虚拟机生成一个代表次数组维度和元素的数组对象。
   * 如果上面步骤无任何异常，那么 C 在虚拟机中实际上已经成为一个有效的类或接口了，但在解析完成之前还要进行符号引用验证，确认 D 是否具备对 C 的访问权限。如果发现不具备访问权限，将抛出 java.lang.IllegalAccessError 异常。
+
  2. 字段解析
 
- 要解析一个未被解析过的字段符号引用，首先将会对字段表内 class_index 项中索引的 CONSTANT_Class_info 符号引用进行解析，也就是字段所属的类或接口的符号引用。此过程如果出现任何异常，字段解析失败。解析成功，这个字段所属类或接口用 C 表示，虚拟机规范要求按照以下步骤对 C 进行后续字段的搜索。
-  * 如果 C 本身就包含了简单名称和字段描述符都与目标相匹配的字段，则返回这个字段的直接饮用，查找结束。
-  * 否则，如果在 C 中实现了接口，将会按照继承关系从下往上递归搜索各个接口和它的父接口，如果接口中包含了简单名称和字段描述符都与目标相匹配的字段，则返回这个字段的直接引用，查找结束。
-  * 否则，如果 C 不是 java.lang.Object 的话，将会按照继承关系从下往上递归搜索其父类，如果在父类中包含了简单名称和字段描述都与目标相匹配的字段，则返回这个字段的直接引用，查找结束。
-  * 否则， 查找失败，跑出 java.lang.NoSuchFieldError 异常。
+   要解析一个未被解析过的字段符号引用，首先将会对字段表内 class_index 项中索引的 CONSTANT_Class_info 符号引用进行解析，也就是字段所属的类或接口的符号引用。此过程如果出现任何异常，字段解析失败。解析成功，这个字段所属类或接口用 C 表示，虚拟机规范要求按照以下步骤对 C 进行后续字段的搜索。
+   * 如果 C 本身就包含了简单名称和字段描述符都与目标相匹配的字段，则返回这个字段的直接饮用，查找结束。
+   * 否则，如果在 C 中实现了接口，将会按照继承关系从下往上递归搜索各个接口和它的父接口，如果接口中包含了简单名称和字段描述符都与目标相匹配的字段，则返回这个字段的直接引用，查找结束。
+   * 否则，如果 C 不是 java.lang.Object 的话，将会按照继承关系从下往上递归搜索其父类，如果在父类中包含了简单名称和字段描述都与目标相匹配的字段，则返回这个字段的直接引用，查找结束。
+   * 否则， 查找失败，跑出 java.lang.NoSuchFieldError 异常。
 
-  如果查找成功返回引用，将对这个字段进行权限验证，如果发现不具备访问权限，抛出 java.lang.IllegalAccessError 异常。
+   如果查找成功返回引用，将对这个字段进行权限验证，如果发现不具备访问权限，抛出 java.lang.IllegalAccessError 异常。
 
-  代码示例 字段解析：FieldResolution
+   代码示例 字段解析：FieldResolution
 
+       ```
+       public class FieldResolution {
 
-  ```
-  public class FieldResolution {
+         interface Interface0 {
+             int A = 0;
+         }
 
-    interface Interface0 {
-        int A = 0;
+         interface Interface1 extends Interface0 {
+             int A = 1;
+         }
+
+         interface Interface2 {
+             int A = 2;
+         }
+
+         static class Parent implements Interface1 {
+             public static int A = 3;
+         }
+
+         static class Sub extends Parent implements Interface2 {
+           //        public static int A = 4;
+             public static int A = 4;
+         }
+
+         public static void main(String[] args) {
+             System.out.println(Sub.A);
+
+             // 如果注释掉 Sub 类中的 public static int A = 4;
+             // 不能编译 Reference to 'A' is ambiguous, ...
+         }
+       }
+       ```
+
+ 3. 类方法解析
+
+ 与字段解析一样，需要先解析方法表的 class_index 项中索引的方法所属的类或接口的符号引用。如果解析成功，这个字段所属类或接口用 C 表示，后续按如下步骤进行类方法搜索。
+  * 类方法和接口方法符号引用的常量类型定义是分开的，如果在类方法中发现 class_index 中索引的 C 是个接口，抛出 java.lang.IncompatibleClassChangeError 异常。
+  * 如果通过了第 1 步，在类 C 中查找是否有简单名称和描述符都与目标相匹配的方法，如果有则返回这个方法的直接引用，查找结束。
+  * 否则，在类 C 的父类中递归查找是否有简单名称和描述符都与目标相匹配的方法，如果有则返回这个方法的直接引用，查找结束。
+  * 否则，在 类 C 实现的接口列表及它们的父接口之中递归查找是否有简单名称和描述符都与目标相匹配的方法，如果存在匹配的方法，说明类 C 是一个抽象类，查找结束，抛出 java.lang.AbstractMethodError 异常。
+  * 否则，宣告方法查找失败，抛出 java.lang.NoSuchMethodError。
+
+  最后，如果查找过程返回了直接引用，将会对这方法进行权限验证，如果发现不具备对此方法的访问权限，抛出 java.lang.IllegalAccessError 异常。
+ 4. 接口方法解析
+
+ 接口方法也需要先解析出接口方法表的 class_index 项中索引的方法所属的类或接口的符号引用。如果解析成功，这个字段所属接口用 C 表示，后续按如下步骤进行接口方法搜索。
+  * 与类方法解析不同，如果接口方法表中发现 class_index 中的索引 C 是各类而不是接口，直接抛出 java.lang.IncompatibleClassChangeError 异常。
+  * 否则，在接口 C 中查找是否有简单名称和描述符都与目标相匹配的方法，如果有则返回这个方法的直接引用，查找结束。
+  * 否则，在接口 C 的父接口中递归查找，直到 java.lang.Object 类（查找范围包括 Object 类）为止，看是否有简单名称和描述符都与目标相匹配的方法，如果有则返回这个方法的直接引用，查找结束。
+  * 否则，宣告方法查找失败，抛出 java.lang.NoSuchMethodError。
+
+  由于接口中所有方法默认都是 public 的，所以不存访问权限问题，因此此过程不会抛出 java.lang.IllegalAccessError 异常。
+
+##### 初始化
+
+类初始化过程是类加载过程的最后一步，前面的类加载过程中，除了在加载阶段用户应用程序可以通过自定义类加载器参与之外，其余动作完全有虚拟机主导和控制。到了初始化阶段，才真正开始执行定义的 Java 程序代码（或说字节码）。
+
+准备阶段，变量已经赋过一次系统要求的初始值，而在初始化阶段，则根据程序员通过程序制定的主管计划去初始化类变量和其他资源，从另一个角度表达：初始化阶段是执行类构造器 <clinit\>() 方法的过程。
+
+ * <clinit\>() 方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块（static{} 块）中的语句合并产生的，编译器收集的顺序由语句在源文件中出现的顺序决定，静态语句块中只能访问到定义在静态语句块之前的变量，定义在其后的变量，在前面的静态语句块可以赋值，但不能访问，代码示例：
+
+```
+public class Test {
+  static {
+    i = 0;
+    System.out.println(i);
+  }
+  static int i = 1;
+}
+```
+
+ * <clinit\>() 方法与类的构造函数（或者说是实例构造器 <init\>() 方法）不同，他不需要显式的调用父类构造器，虚拟机会保证在子类的 <clinit\>() 方法执行之前，父类的 <clinit\>() 方法已经执行完毕。因此在虚拟机中第一个被执行的 <clinit\>() 方法的类肯定是 java.lang.Object。
+ * 由于父类的 <clinit\>() 方法先执行，意味着父类中定义的静态语句要优先于子类的变量复制操作，如代码清单：
+
+ ```
+ public class Parent {
+
+    public static int A = 1;
+    static {
+        A = 2;
     }
 
-    interface Interface1 extends Interface0 {
-        int A = 1;
-    }
-
-    interface Interface2 {
-        int A = 2;
-    }
-
-    static class Parent implements Interface1 {
-        public static int A = 3;
-    }
-
-    static class Sub extends Parent implements Interface2 {
-      //        public static int A = 4;
-        public static int A = 4;
+    static class Sub extends Parent {
+        public static int B = A;
     }
 
     public static void main(String[] args) {
-        System.out.println(Sub.A);
-
-        // 如果注释掉 Sub 类中的 public static int A = 4;
-        // 不能编译 Reference to 'A' is ambiguous, ...
+        System.out.println(Sub.B);  //   输出 2，而不是 1
     }
+}
+ ```
+ * <clinit\>()方法对于类或接口来说并不是必需的，如果一个类没有静态语句块，也没有对变量的赋值操作，那没编译器可以不为这个类生成 <clinit\>() 方法。
+ * 接口中不能使用静态语句块，但仍然有变量初始化的赋值操作，因此接口与类一样都会生成 <clinit\>() 方法。不同是，执行接口的 <clinit\>() 方法不需要先执行父接口的 <clinit\>() 方法。只有当父接口中定义的变量使用时，父接口才会初始化。另外，接口的实现类在初始化时也一样不会执行接口的 <clinit\>() 方法。
+ * 虚拟机会保证一个类的 <clinit\>() 方法在多线程环境中被正确的加锁、同步，如果多线程同时去初始化一个类，那么只会有一个线程去执行这个类的 <clinit\>() 方法，其他线程都需要阻塞等待，直到活动线程执行 <clinit\>() 方法完毕。如果一个类的 <clinit\>() 方法中有耗时很长的操作，就可能造成多个进程（此处“进程”可能应为“线程”？作者笔误？）阻塞（其他线程虽然会被阻塞，但如果执行 <clinit\>() 方法的那个线程退出 <clinit\>() 方法后，其他线程唤醒不会再次进入 <clinit\>() 方法，同一个类加载器下，一个类型只会初始化一次。），实际应用中这种阻塞往往是很隐蔽的。
+
+ 代码示例：
+
+ ```
+  public class DeadLoopClass {
+
+      static {
+          /*如果不加上这个 if 语句，编译器将提示 "Initializer must be able to complete normally"*/
+          if (true) {
+              System.out.println(Thread.currentThread() + "init DeadLoopClass");
+              while (true) {
+
+              }
+          }
+      }
   }
-  ```
- 3. 类方法解析
- 4. 接口方法解析
+
+  public class InitTest {
+
+      public static void main(String[] args) {
+          Runnable script = () -> {
+              System.out.println(Thread.currentThread() + "start");
+              DeadLoopClass dlc = new DeadLoopClass();
+              System.out.println(Thread.currentThread() + " RUN OVER");
+          };
+
+          Thread thread1 = new Thread(script);
+          Thread thread2 = new Thread(script);
+          thread1.start();
+          thread2.start();
+
+          // 运行输出：
+          // Thread[Thread-1,5,main]start
+          // Thread[Thread-0,5,main]start
+          // Thread[Thread-1,5,main]init DeadLoopClass
+
+          // 一条线程在死循环以模拟长时间操作，另外一条线程阻塞等待。
+          // 只会有一个线程去执行类 DeadLoopClass 的 <clinit>() 方法
+      }
+  }
+ ```
+
+### 类加载器
+
+
+
+
 
 
 

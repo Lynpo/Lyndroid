@@ -3,10 +3,13 @@ package com.lynpo.home;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.lynpo.R;
@@ -29,6 +32,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        LinearLayout linearLayout = findViewById(R.id.linearLayout);
         StarView starView = findViewById(R.id.starView);
         TextView textView = findViewById(R.id.tv);
+        EditText editText = findViewById(R.id.editText);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Log.d("debug_info", "beforeTextChanged");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("debug_info", "onTextChanged");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.d("debug_info", "afterTextChanged");
+            }
+        });
 //        int linearLayouttop = linearLayout.getTop();
 //        int linearLayoutleft = linearLayout.getLeft();
 

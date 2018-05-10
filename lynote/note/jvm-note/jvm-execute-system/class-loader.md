@@ -395,17 +395,124 @@ public class Test {
 
 ### 类加载器
 
+类加载阶段中“通过一个类的全限定名来获取描述类的二进制字节流”这个动作在 Java 虚拟机外部去实现，应用程序自行决定如何获取重要的类。实现这个动作的模块称为“类加载器”。
 
+##### 类与类加载器
 
+任意一个类，都需要由加载器和这个类本身一同确立在 Java 虚拟机中的唯一性，每一个类加载器，都有一个独立的类命名空间：两个类是否“相等”，只有在两个类是由同一个类加载器加载的前提下才有意义；亦即两个来源于同一个 Class 文件，被同一个虚拟机加载，主要加载的类加载器不同，这两个类必定不相等。
 
+此处“相等”包括： Class 对象的 equals() 方法， isAssignableFrom() 方法， isInstance() 方法的返回结果，也包括使用 instanceof 关键字做对象所属关系判定情况。
 
+代码示例：
+```
+/**
+  * 类加载器与 instanceof 关键字演示：
+  *
+  * 创建一个类加载器去加载一个与自己在同一路径下的 Class 文件并实例化，
+  * 这个对象却与 ClassLoaderTest 不同，原因：
+  *
+  * 虚拟机中存在了两个 ClassLoaderTest 类，一个是由系统应用程序类加载器加载的，另一个是有自定义类加载器加载的。
+  */
+public class ClassLoaderTest {
 
+    public static void main(String[] args) throws Exception {
+        ClassLoader classLoader = new ClassLoader() {
+            @Override
+            public Class<?> loadClass(String name) throws ClassNotFoundException {
+                try {
+                    String fileName = name.substring(name.lastIndexOf(".") + 1) + ".class";
+                    InputStream is = getClass().getResourceAsStream(fileName);
+                    if (is == null) {
+                        return super.loadClass(name);
+                    }
 
+                    byte[] b = new byte[is.available()];
+                    is.read(b);
+                    return defineClass(name, b, 0, b.length);
+                } catch (IOException e) {
+                    throw new ClassNotFoundException(name);
+                }
+            }
+        };
 
+        Object obj = classLoader.loadClass("com.lynpo.lynote.sample.classloading.loader.ClassLoaderTest").newInstance();
 
+        System.out.println(obj.getClass());
+        System.out.println(obj instanceof ClassLoaderTest);
 
+        // 运行结果：
+        // class com.lynpo.lynote.sample.classloading.loader.ClassLoaderTest
+        // false
+    }
+}
+```
 
+##### 双亲委派类型
 
+从 Java 虚拟机角度讲，只存在两种不同的类加载器：一是启动类加载器（Bootstrap ClassLoader），这个类加载器使用 C++ 语言实现，是虚拟机自身一部分；另一个就是所有其他类加载器，有 Java 语言实现，独立于虚拟机外部，并全部继承自抽象类 java.lang.ClassLoader。
 
+绝大部分 java 程序都会使用到以下 3 中系统提供的类加载器：
+ * 启动类加载器（Bootstrap ClassLoader）：负责将存在<JAVA_HOME>\\lib 目录中， 或被 -Xbootclasspath 参数指定路径中，并且是虚拟机识别(按文件名识别，如 rt.jar,不符合不加载)类库加载到虚拟机内存中。启动类加载器无法被 Java 程序直接引用。编写自定义加载器时，如需为派给引导类加载器，直接使用 null 代替即可。
+ * 阔爱站类加载器：这个加载器由 sun.misc.Launcher$ExtClassLoader 实现，他负责加载 <JAVA_HOME>\\lib\\ext 目录中的，或被 java.ext.dirs 系统变量所指定的路径中的所有类库，开发者可直接使用扩展类加载器。
+ * 应用程序类加载器：这个类加载器由  sum.misc.Launcher$AppClassLoader 实现。它负责加载用户类路径（ClassPath）上所指定类库，开发者可直接使用这个类加载器，若应用程序没有自定义过类加载器，这个是程序默认类加载器。
+
+ 双亲委派模型工作过程：如果一个类加载器收到了类加载请求，首先他不会自己尝试加在这个类，而是把这个请求委派给父类加载器，每一个层次的类加载器都是如此，因此所有请求都会传递到顶层的启动类加载器，只有当父加载器反馈无法完成加载时，子加载器才尝试加载。
+
+ java.lang.ClassLoader.loadClass() 代码示例:
+
+ ```
+ // <p> Unless overridden, this method synchronizes on the result of
+// {@link #getClassLoadingLock <tt>getClassLoadingLock</tt>} method
+// during the entire class loading process.
+  protected Class<?> loadClass(String name, boolean resolve)
+    throws ClassNotFoundException
+{
+        // First, check if the class has already been loaded
+        Class<?> c = findLoadedClass(name);
+        if (c == null) {
+            try {
+                if (parent != null) {
+                    c = parent.loadClass(name, false);
+                } else {
+                    c = findBootstrapClassOrNull(name);
+                }
+            } catch (ClassNotFoundException e) {
+                // ClassNotFoundException thrown if class not found
+                // from the non-null parent class loader
+            }
+
+            if (c == null) {
+                // If still not found, then invoke findClass in order
+                // to find the class.
+                c = findClass(name);
+            }
+        }
+        return c;
+}
+
+ ```
+
+##### 破坏双亲委派模型
+
+双亲委派模型不是强制约束，是 Java 设计者推荐给开发者的类加载器实现方式。
+
+例外，——“破坏”。
+
+JDK 1.2 之后不提倡覆盖 loadClass() 方法，而把类加载逻辑写到 findClass() 方法中，参考上一节 loadClass() 源码：如果 loadClass() 失败， 调用 findClass() 完成加载。
+
+Sun JSR-294, JSR-277 规范在与 JCP 组织模块化规范之争中落败给 JSR-291(即 OSGi R4.2)
+
+OSGi， 业界 Java 模块化标准， 其 实现模块化热部署的关键则是自定义类加载器机制。每一个程序模块（Bundle）都有一个自己的类加载器，如需更换 Bundle，把 Bundle 连同类加载器一起换掉以实现代码热替换。
+
+OSGi，类加载器不再是双亲委派模型的树状结构，而发展为更加复杂的网状结构，当收到类加载请求时，按以下步骤顺序进行类搜索：
+ 1. 将以 java.* 开头的类为派给父类加载器加载
+ 2. 否则，将委派列表名单内的类委派给父类加载器加载
+ 3. 否则，将 Import 列表中的类委派给 Export 这个类的 Bundle 的类加载器加载
+ 4. 否则，查找当前 Bundle 的 ClassPath，使用自己的类加载器加载
+ 5. 否则，查找类是否在自己的 Fragment Bundle 中，如果在，则委派给 Fragment Bundle 的类加载器加载
+ 6. 否则，查找 Dynamic Import 列表的 Bundle，委派给对应 Bundle 的类加载器加载。
+ 7. 否则，类查找失败。
+
+ 以上查找顺序只有开头 2 点仍然符合双亲委派规则，其余的类查找都是在平级的类加载器中进行的。
 
 E.O.F

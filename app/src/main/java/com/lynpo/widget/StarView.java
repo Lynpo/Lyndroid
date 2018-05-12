@@ -3,12 +3,12 @@ package com.lynpo.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.lynpo.R;
@@ -21,20 +21,21 @@ import com.lynpo.R;
  */
 public class StarView extends View {
 
-    private int mPathColor;
+    private int mColor;
 
     public StarView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public StarView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public StarView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.StarView, defStyleAttr, 0);
-        int color = array.getColor(R.styleable.StarView_path_color, ContextCompat.getColor(context, R.color.colorAccent));
+        mColor = array.getColor(R.styleable.StarView_path_color, ContextCompat.getColor(context, R.color.colorAccent));
+        array.recycle();
     }
 
     @Override
@@ -46,7 +47,7 @@ public class StarView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
+        paint.setColor(mColor);
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.STROKE);
 

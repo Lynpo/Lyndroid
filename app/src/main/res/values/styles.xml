@@ -11,4 +11,7 @@
     <declare-styleable name="StarView">
         <attr name="path_color" format="color"/>
     </declare-styleable>
+    <declare-styleable name="CornerShape">
+        <attr name="paint_color" format="color"/>
+    </declare-styleable>
 </resources>

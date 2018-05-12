@@ -55,6 +55,7 @@ dependencies {
     implementation deps.dagger.android
     implementation deps.dagger.android_support
     annotationProcessor deps.dagger.android_support_compiler
+    implementation deps.kotlin.stdlib
 
 //    implementation 'org.webrtc:google-webrtc:1.0.22672'
 }

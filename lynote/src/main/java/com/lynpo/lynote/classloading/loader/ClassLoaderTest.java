@@ -1,4 +1,4 @@
-package com.lynpo.lynote.sample.classloading.loader;
+package com.lynpo.lynote.classloading.loader;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,13 +55,13 @@ public class ClassLoaderTest {
             }
         };
 
-        Object obj = classLoader.loadClass("com.lynpo.lynote.sample.classloading.loader.ClassLoaderTest").newInstance();
+        Object obj = classLoader.loadClass("com.lynpo.lynote.classloading.loader.ClassLoaderTest").newInstance();
 
         System.out.println(obj.getClass());
         System.out.println(obj instanceof ClassLoaderTest);
 
         // 运行结果：
-        // class com.lynpo.lynote.sample.classloading.loader.ClassLoaderTest
+        // class com.lynpo.lynote.classloading.loader.ClassLoaderTest
         // false
     }
 }

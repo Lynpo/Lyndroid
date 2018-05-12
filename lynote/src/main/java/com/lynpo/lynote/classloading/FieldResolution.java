@@ -1,4 +1,4 @@
-package com.lynpo.lynote.sample.classloading;
+package com.lynpo.lynote.classloading;
 
 /**
  * Create by fujw on 2018/5/7.

@@ -1,4 +1,4 @@
-package com.lynpo.lynote.sample;
+package com.lynpo.lynote;
 
 public class HelloWorld {
 

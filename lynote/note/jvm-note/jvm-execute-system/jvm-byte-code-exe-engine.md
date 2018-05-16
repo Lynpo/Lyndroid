@@ -620,20 +620,61 @@ sayHello() 方法通过 **invokestatic** 命令调用。
 
 ### 基于栈的字节码解释执行引擎
 
+抽象语法树，Abstract Syntax Tree, AST.
 
+![java-compile](../image/java-compile.jpeg)
+ 图 Java 编译过程（其中指令流、中间代码为可选项，参考《深入理解JVM》图8-4）
 
+ Java 语言中，Javac 编译器完成程序代码经过词法分析、语法分析到抽象语法树，再遍历语法树生成线性的字节码指令流的过程。这一部分动作是在 Java 虚拟机之外进行的，而解释器在虚拟机内部。
 
+##### 8.4.2 基于栈的指令集与基于寄存器的指令集
 
+栈访问
+  * 优点：可移植
+  * 缺点：内存访问，瓶颈
 
+##### 8.4.3 基于栈的解释器执行过程
 
+代码示例
+```
+public class ProcedureOfExecutionOnStack {
 
+    public static int calc() {
+        int a = 100;
+        int b = 200;
+        int c = 300;
+        return (a + b) * c;
+    }
 
+    public static void main(String[] args) {
+        int cal = calc();
+        System.out.println("result: " + cal);
+    }
+}
 
+// $ javap -verbose ProcedureOfExecutionOnStack.class
+//...
+public static int calc();
+  descriptor: ()I
+  flags: ACC_PUBLIC, ACC_STATIC
+  Code:
+    stack=2, locals=3, args_size=0
+       0: bipush        100
+       2: istore_0
+       3: sipush        200
+       6: istore_1
+       7: sipush        300
+      10: istore_2
+      11: iload_0
+      12: iload_1
+      13: iadd
+      14: iload_2
+      15: imul
+      16: ireturn
+ //...
+```
+ 深度 stack = 2 的操作数栈， 局部变量（locals=3） 3 个 Slot 空间；程序计数器(偏移地址) 0，2，3，6，...,14,15,16.
 
-
-
-
-
-
+ 字节码指令：bipush, isstore_0,...
 
 E.O.F

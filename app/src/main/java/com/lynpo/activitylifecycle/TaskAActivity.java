@@ -1,5 +1,6 @@
 package com.lynpo.activitylifecycle;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,11 @@ import com.lynpo.base.BaseActivity;
 public class TaskAActivity extends BaseActivity {
 
     private static final String TAG = "TaskAActivity";
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, TaskAActivity.class);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

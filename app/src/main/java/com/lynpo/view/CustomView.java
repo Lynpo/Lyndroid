@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
 
 
 /**
@@ -45,14 +44,14 @@ public class CustomView extends View {
                 int offY = y - lastY;
                 // 移动View
                 // 方案一
-                layout(getLeft() + offX, getTop() + offY, getRight() + offX, getBottom() + offY);
+//                layout(getLeft() + offX, getTop() + offY, getRight() + offX, getBottom() + offY);
                 // 方案二
                 offsetLeftAndRight(offX);
                 offsetTopAndBottom(offY);
-                // 方案三
-                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) getLayoutParams();
-                layoutParams.leftMargin = getLeft() + offX;
-                layoutParams.topMargin = getTop() + offY;
+                // 方案三  // 测试没生效
+//                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) getLayoutParams();
+//                layoutParams.leftMargin = getLeft() + offX;
+//                layoutParams.topMargin = getTop() + offY;
                 break;
         }
         return true;

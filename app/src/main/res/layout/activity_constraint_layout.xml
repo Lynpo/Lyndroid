@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintToolbarView"
+    android:layout_width="match_parent"
+    android:layout_height="56dp">
+    <!-- 最左：返回箭头 -->
+    <ImageView
+        android:id="@+id/leftIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/baseline_arrow_back_black_24"
+        android:contentDescription="@string/app_name" />
+    <!-- 标题 -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        app:layout_constraintLeft_toRightOf="@id/leftIcon"
+        app:layout_constraintRight_toLeftOf="@id/thirdIconFromRight"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:textSize="19sp"
+        android:textColor="@color/color_333333"
+        android:textStyle="bold"
+        tools:text="用药经验用药经验用药经验" />
+    <!-- 靠右，右起第一个图标 -->
+    <ImageView
+        android:id="@+id/firstIconFromRight"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:src="@drawable/baseline_more_vert_black_24"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:contentDescription="@string/app_name" />
+    <!-- 靠右，右起第二个图标 -->
+    <ImageView
+        android:id="@+id/secondIconFromRight"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+        app:layout_constraintRight_toLeftOf="@id/firstIconFromRight"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:src="@drawable/baseline_share_black_24"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:contentDescription="@string/app_name" />
+    <!-- 靠右，右起第三个图标 -->
+    <ImageView
+        android:id="@+id/thirdIconFromRight"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+        app:layout_constraintRight_toLeftOf="@id/secondIconFromRight"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/baseline_favorite_border_black_24"
+        tools:visibility="visible"
+        android:visibility="gone"
+        android:contentDescription="@string/app_name"/>
+
+    <View
+        android:id="@+id/underline"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/color_d9d9d9"/>
+</android.support.constraint.ConstraintLayout>

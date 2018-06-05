@@ -50,6 +50,7 @@ dependencies {
     implementation deps.guava.runtime
 
     // Dagger dependencies
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     annotationProcessor deps.dagger.compiler
     implementation deps.dagger.runtime
     implementation deps.dagger.android

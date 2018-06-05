@@ -8,27 +8,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".home.MainActivity">
+        <activity android:name=".home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".home.MainActivity"/>
         <activity android:name=".detail.DetailActivity" />
-        <activity android:name=".home.HomeActivity" />
         <activity android:name=".view.MoveViewActivity" />
         <activity android:name=".view.CustomViewActivity" />
-        <activity android:name=".nestedfragments.FragmentContainerActivity">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
+        <activity android:name=".nestedfragments.FragmentContainerActivity"/>
         <activity
             android:name=".activitylifecycle.TaskAActivity"
             android:launchMode="standard" />
@@ -36,7 +27,7 @@
             android:name=".activitylifecycle.TaskBActivity"
             android:launchMode="standard" />
         <activity android:name=".temppage.IncludeViewTest" />
-        <activity android:name=".progress.ProgressbarActivity"/>
+        <activity android:name=".view.constraintlayout.ConstraintLayoutActivity" />
     </application>
 
 </manifest>

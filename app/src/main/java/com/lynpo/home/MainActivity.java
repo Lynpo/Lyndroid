@@ -1,5 +1,6 @@
 package com.lynpo.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -13,14 +14,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.lynpo.R;
-import com.lynpo.activitylifecycle.TaskAActivity;
 import com.lynpo.base.BaseActivity;
+import com.lynpo.view.constraintlayout.ConstraintLayoutActivity;
 import com.lynpo.widget.StarView;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String DEBUG_INFO = "debug_info";
 
+    public static void start(Context context) {
+        Intent starter = new Intent(context, MainActivity.class);
+        context.startActivity(starter);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +92,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.tv) {
-            startActivity(new Intent(mContext, TaskAActivity.class));
+            ConstraintLayoutActivity.start(this);
 //            startActivity(new Intent(mContext, IncludeViewTest.class));
         }
     }

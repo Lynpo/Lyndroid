@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.lynpo.R;
 import com.lynpo.activitylifecycle.TaskAActivity;
 import com.lynpo.base.BaseActivity;
+import com.lynpo.view.CustomViewActivity;
 import com.lynpo.view.MoveViewActivity;
 
 /**
@@ -25,12 +26,25 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         TextView tv11 = findViewById(R.id.tv_11);
         TextView tv12 = findViewById(R.id.tv_12);
         TextView tv13 = findViewById(R.id.tv_13);
+
+        TextView tv21 = findViewById(R.id.tv_21);
+        TextView tv22 = findViewById(R.id.tv_22);
+        TextView tv23 = findViewById(R.id.tv_23);
+
         tv11.setText("Main");
         tv12.setText("TaskA");
         tv13.setText("MoveView");
+
+        tv21.setText("CustomView");
+        tv22.setText("CustomView");
+        tv23.setText("CustomView");
+
         tv11.setOnClickListener(this);
         tv12.setOnClickListener(this);
         tv13.setOnClickListener(this);
+        tv21.setOnClickListener(this);
+        tv22.setOnClickListener(this);
+        tv23.setOnClickListener(this);
     }
 
     @Override
@@ -45,6 +59,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.tv_13:
                 MoveViewActivity.start(mContext);
+                break;
+            case R.id.tv_21:
+                CustomViewActivity.start(mContext);
                 break;
         }
     }

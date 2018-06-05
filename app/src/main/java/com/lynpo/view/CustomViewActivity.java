@@ -1,5 +1,7 @@
 package com.lynpo.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
@@ -24,10 +26,15 @@ public class CustomViewActivity extends AppCompatActivity {
         String[] strs1 = {"1", "2", "3", "4", "5", "6", "7", "2", "2", "2", "2", "2", "2", "2"};
         String[] strs2 = {"A", "B", "3", "4", "5", "6", "7", "2", "2", "2", "2", "2", "2", "2"};
 
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, strs1);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, strs2);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, strs1);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, strs2);
 
         mListView1.setAdapter(adapter1);
         mListView2.setAdapter(adapter2);
+    }
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, CustomViewActivity.class);
+        context.startActivity(starter);
     }
 }

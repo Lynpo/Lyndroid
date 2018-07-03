@@ -29,6 +29,10 @@ public class CustomView extends View {
         super(context, attrs, defStyleAttr);
     }
 
+    public void move() {
+        offsetTopAndBottom(100);
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int x = (int) event.getX();

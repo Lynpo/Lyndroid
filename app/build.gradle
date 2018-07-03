@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -18,6 +19,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
         }
     }
 
@@ -50,12 +56,16 @@ dependencies {
     implementation deps.guava.runtime
 
     // Dagger dependencies
-    annotationProcessor deps.dagger.compiler
+    kapt deps.dagger.compiler
     implementation deps.dagger.runtime
     implementation deps.dagger.android
     implementation deps.dagger.android_support
-    annotationProcessor deps.dagger.android_support_compiler
+    kapt deps.dagger.android_support_compiler
     implementation deps.kotlin.stdlib
+
+    // image lib: Glide
+    implementation deps.glide.runtime
+    kapt deps.glide.compiler
 
     // video:jiaozivideo
     implementation deps.jiaozivideo

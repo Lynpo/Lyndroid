@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ConstraintLayout constraintLayout = findViewById(R.id.parent);
 //        LinearLayout linearLayout = findViewById(R.id.linearLayout);

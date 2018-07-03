@@ -32,7 +32,7 @@
         <activity android:name=".temppage.IncludeViewTest" />
         <activity android:name=".view.constraintlayout.ConstraintLayoutActivity" />
         <activity android:name=".video.VideoActivity" />
-        <!--<activity android:name=".kotlin.ReturnNullActivity"/>-->
+        <activity android:name=".kotlin.ReturnNullActivity"/>
     </application>
 
 </manifest>

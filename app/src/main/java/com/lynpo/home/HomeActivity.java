@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.lynpo.R;
 import com.lynpo.activitylifecycle.TaskAActivity;
 import com.lynpo.base.BaseActivity;
+import com.lynpo.kotlin.ReturnNullActivity;
 import com.lynpo.video.VideoActivity;
 import com.lynpo.view.CustomViewActivity;
 import com.lynpo.view.MoveViewActivity;
@@ -67,9 +68,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             case R.id.tv_22:
                 VideoActivity.start(mContext);
                 break;
-//            case R.id.tv_23:
-//                startActivity(new Intent(mContext, ReturnNullActivity.class));
-//                break;
+            case R.id.tv_23:
+//                startActivity(ReturnNullActivity.Companion.returnNullIntent(mContext, 1));
+//                startActivity(ReturnNullActivity.returnNullIntent(mContext, 1));
+                ReturnNullActivity.start(mContext);
+                break;
         }
     }
 }

@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.lynpo.R;
 import com.lynpo.activitylifecycle.TaskAActivity;
 import com.lynpo.base.BaseActivity;
+import com.lynpo.video.VideoActivity;
 import com.lynpo.view.CustomViewActivity;
 import com.lynpo.view.MoveViewActivity;
 
@@ -36,8 +37,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         tv13.setText("MoveView");
 
         tv21.setText("CustomView");
-        tv22.setText("CustomView");
-        tv23.setText("CustomView");
+        tv22.setText("Video");
+        tv23.setText("KotlinReturnNull");
 
         tv11.setOnClickListener(this);
         tv12.setOnClickListener(this);
@@ -63,6 +64,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             case R.id.tv_21:
                 CustomViewActivity.start(mContext);
                 break;
+            case R.id.tv_22:
+                VideoActivity.start(mContext);
+                break;
+//            case R.id.tv_23:
+//                startActivity(new Intent(mContext, ReturnNullActivity.class));
+//                break;
         }
     }
 }

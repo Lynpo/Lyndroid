@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lynpo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -12,14 +14,15 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home.MainActivity"/>
+        <activity android:name=".home.MainActivity" />
         <activity android:name=".detail.DetailActivity" />
         <activity android:name=".view.MoveViewActivity" />
         <activity android:name=".view.CustomViewActivity" />
-        <activity android:name=".nestedfragments.FragmentContainerActivity"/>
+        <activity android:name=".nestedfragments.FragmentContainerActivity" />
         <activity
             android:name=".activitylifecycle.TaskAActivity"
             android:launchMode="standard" />
@@ -28,6 +31,8 @@
             android:launchMode="standard" />
         <activity android:name=".temppage.IncludeViewTest" />
         <activity android:name=".view.constraintlayout.ConstraintLayoutActivity" />
+        <activity android:name=".video.VideoActivity" />
+        <!--<activity android:name=".kotlin.ReturnNullActivity"/>-->
     </application>
 
 </manifest>

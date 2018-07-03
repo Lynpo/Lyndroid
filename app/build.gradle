@@ -58,6 +58,9 @@ dependencies {
     annotationProcessor deps.dagger.android_support_compiler
     implementation deps.kotlin.stdlib
 
+    // video:jiaozivideo
+    implementation deps.jiaozivideo
+
 //    implementation 'org.webrtc:google-webrtc:1.0.22672'
 }
 

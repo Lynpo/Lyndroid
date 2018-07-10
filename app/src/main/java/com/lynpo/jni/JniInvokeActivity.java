@@ -17,7 +17,7 @@ public class JniInvokeActivity extends BaseActivity {
         setContentView(R.layout.activity_jni_invoke);
 
         final TextView textView = findViewById(R.id.jniTextView);
-        String hashSign = new ApkUtil().getCertSHA1(mContext);
+        String hashSign = ApkUtil.getCertSHA1(mContext);
         final String string = JniVisitor.stringFromJNI(mContext, hashSign);
 
         textView.postDelayed(new Runnable() {

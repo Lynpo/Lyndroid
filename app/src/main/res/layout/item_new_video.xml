@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp">
+
+    <ImageView
+        android:id="@+id/item_avatar_iv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/item_from_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toTopOf="@+id/item_avatar_iv"
+        app:layout_constraintBottom_toBottomOf="@+id/item_avatar_iv"
+        app:layout_constraintLeft_toRightOf="@+id/item_avatar_iv"
+        android:textColor="#666666"
+        android:textSize="14sp"
+        tools:text="喜洋洋何灰太狼" />
+
+    <cn.jzvd.JZVideoPlayerStandard
+        android:id="@+id/item_post_video"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_avatar_iv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="visible"
+        app:layout_constraintDimensionRatio="16:9"/>
+
+    <TextView
+        android:id="@+id/item_post_title_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:lineSpacingMultiplier="1.15"
+        android:maxLines="2"
+        android:textColor="#333333"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/item_post_video"
+        tools:text="护士节特别活动第一波：晒照片，送祝福！"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/item_post_content_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.25"
+        android:maxLines="2"
+        android:textColor="#999999"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/item_post_title_tv"
+        tools:text="512 国际护士节到来之际，丁香园论坛为表示对广大辛勤工作的护士的节日祝福，特别策划了一系列活动…"
+        android:visibility="visible"/>
+
+</android.support.constraint.ConstraintLayout>

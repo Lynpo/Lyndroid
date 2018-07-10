@@ -1,1 +1,1 @@
-include ':app', ':lynote'
+include ':app', ':lynote', ':video'

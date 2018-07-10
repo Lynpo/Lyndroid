@@ -40,9 +40,10 @@ dependencies {
     implementation deps.support.recyclerview
     implementation deps.support.annotations
     implementation deps.support.constraint_layout
-    //    testImplementation 'junit:junit:4.12'
-    //    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    testImplementation deps.junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.espresso.core
 
     // rxJava, Gson, OkHttp, retrofit
     implementation deps.rxjava2
@@ -67,8 +68,7 @@ dependencies {
     implementation deps.glide.runtime
     kapt deps.glide.compiler
 
-    // video:jiaozivideo
-    implementation deps.jiaozivideo
+    implementation project(':video')
 
 //    implementation 'org.webrtc:google-webrtc:1.0.22672'
 }

@@ -1,4 +1,4 @@
-package com.lynpo.jniinvoke;
+package com.lynpo.jni;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -6,7 +6,7 @@ import android.widget.TextView;
 import com.lynpo.R;
 import com.lynpo.annos.ActivityConfig;
 import com.lynpo.base.BaseActivity;
-import com.lynpo.util.ToastUtils;
+import com.lynpo.util.ApkUtil;
 
 @ActivityConfig(name = "JniInvokeActivity")
 public class JniInvokeActivity extends BaseActivity {
@@ -17,7 +17,8 @@ public class JniInvokeActivity extends BaseActivity {
         setContentView(R.layout.activity_jni_invoke);
 
         final TextView textView = findViewById(R.id.jniTextView);
-        final String string = JniVisitor.stringFromJNI(mContext);
+        String hashSign = new ApkUtil().getCertSHA1(mContext);
+        final String string = JniVisitor.stringFromJNI(mContext, hashSign);
 
         textView.postDelayed(new Runnable() {
             @Override

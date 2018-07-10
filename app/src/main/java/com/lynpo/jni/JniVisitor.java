@@ -1,4 +1,4 @@
-package com.lynpo.jniinvoke;
+package com.lynpo.jni;
 
 import android.content.Context;
 
@@ -13,5 +13,7 @@ public class JniVisitor {
         System.loadLibrary("native-lib");
     }
 
-    public static native String stringFromJNI(Context context);
+    public static native String stringFromJNI(Context context, String hashSign);
+
+    public static native String hashSignFromJNI(Context context);
 }

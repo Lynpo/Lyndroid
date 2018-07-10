@@ -14,7 +14,7 @@ import com.lynpo.base.BaseActivity;
 import com.lynpo.base.adapter.BaseRclViewAdapter;
 import com.lynpo.base.adapter.CommonViewHolder;
 import com.lynpo.common.ClassHolder;
-import com.lynpo.jniinvoke.JniInvokeActivity;
+import com.lynpo.jni.JniInvokeActivity;
 import com.lynpo.kotlin.ReturnNullActivity;
 import com.lynpo.video.VideoActivity;
 import com.lynpo.view.CustomViewActivity;

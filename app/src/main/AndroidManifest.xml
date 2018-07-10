@@ -33,7 +33,7 @@
         <activity android:name=".view.constraintlayout.ConstraintLayoutActivity" />
         <activity android:name=".video.VideoActivity" />
         <activity android:name=".kotlin.ReturnNullActivity"/>
-        <activity android:name=".jniinvoke.JniInvokeActivity"/>
+        <activity android:name=".jni.JniInvokeActivity"/>
     </application>
 
 </manifest>

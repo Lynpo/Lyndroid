@@ -17,9 +17,17 @@ public class JniInvokeActivity extends BaseActivity {
         setContentView(R.layout.activity_jni_invoke);
 
         final TextView textView = findViewById(R.id.jniTextView);
-        String hashSign = ApkUtil.getCertSHA1(mContext);
-        final String string = JniVisitor.stringFromJNI(mContext, hashSign);
+        final TextView signInfo = findViewById(R.id.hashSignatureText);
 
+        /*
+         * The signature sha1 is generated with
+         * Android Studio - Build > Generate Signed APK > ...
+         */
+        String javaHashSign = ApkUtil.getCertSHA1(mContext);
+        String nativeHashSign = JniVisitor.hashSignFromJNI();
+        final String string = JniVisitor.stringFromJNI();
+
+        signInfo.setText(String.format("javaHashSign:%s\nnativeHashSign:%s", javaHashSign, nativeHashSign));
         textView.postDelayed(new Runnable() {
             @Override
             public void run() {

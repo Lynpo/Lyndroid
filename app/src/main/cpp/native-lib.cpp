@@ -4,6 +4,11 @@
 
 const std::string Lynpo_Const::LYNPO_NAME = "Lynpo";
 const char HexCode[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+/**
+ * the signature sha1 is generated with
+ * Android Studio - Build > Generate Signed APK > ...
+ */
+const char *app_signature_sha1 = "8F23CB6BB39860937CF9E2B863C95A1CE1FAA742";
 
 jobject getApplication(JNIEnv *env) {
     jclass localClass = (env)->FindClass("android/app/ActivityThread");
@@ -84,9 +89,7 @@ jbyteArray getHashSign(JNIEnv *env) {
     return sha1_byte;
 }
 
-bool hashSignValid(JNIEnv *env, jstring hashSign) {
-    const  char *sign=(env)->GetStringUTFChars(hashSign,NULL);
-
+bool hashSignValid(JNIEnv *env, const  char *sign) {
     jbyteArray sha1_byte = getHashSign(env);
     //toHexString
     jsize array_size=(env)->GetArrayLength(sha1_byte);
@@ -102,16 +105,12 @@ bool hashSignValid(JNIEnv *env, jstring hashSign) {
 }
 
 extern "C"
-JNIEXPORT jstring JNICALL Java_com_lynpo_jni_JniVisitor_stringFromJNI(
-        JNIEnv *env,
-        jclass,
-        jobject obj,
-        jstring hashSign) {
+JNIEXPORT jstring JNICALL Java_com_lynpo_jni_JniVisitor_stringFromJNI(JNIEnv *env, jclass) {
     std::string hello = "Hello from C++, my name is ";
     std::string name = Lynpo_Const::LYNPO_NAME;
     std::string sentence = hello.append(name);
 
-    if (hashSignValid(env, hashSign)) {
+    if (hashSignValid(env, app_signature_sha1)) {
         return env->NewStringUTF(sentence.c_str());
     } else {
         return env->NewStringUTF("A u kidding me $_$");
@@ -119,7 +118,7 @@ JNIEXPORT jstring JNICALL Java_com_lynpo_jni_JniVisitor_stringFromJNI(
 }
 
 extern "C"
-JNIEXPORT jstring JNICALL Java_com_lynpo_jni_JniVisitor_hashSignFromJNI(JNIEnv *env, jclass, jobject obj) {
+JNIEXPORT jstring JNICALL Java_com_lynpo_jni_JniVisitor_hashSignFromJNI(JNIEnv *env, jclass) {
     jbyteArray sha1_byte = getHashSign(env);
     //toHexString
     jsize array_size=(env)->GetArrayLength(sha1_byte);

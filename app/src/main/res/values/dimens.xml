@@ -2,4 +2,8 @@
 <resources>
     <dimen name="dp_4">4dp</dimen>
     <dimen name="dp_14">14dp</dimen>
+    <dimen name="color_swatch_large">64.0dip</dimen>
+    <dimen name="color_swatch_small">48.0dip</dimen>
+    <dimen name="color_swatch_margins_large">8.0dip</dimen>
+    <dimen name="color_swatch_margins_small">4.0dip</dimen>
 </resources>

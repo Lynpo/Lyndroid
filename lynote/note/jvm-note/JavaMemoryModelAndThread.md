@@ -12,28 +12,30 @@
 ##### 主内存与工作内存
 
 ![main memory and working memory](./image/javamemorymodel.jpg)
+
 线程、主内存、工作内存三折的交互关系
 
 类比下图
 ![processor-cache-memory](./image/processormainmemory.png)
+
 处理器、高速缓存、主内存间的交互关系
 
 ##### 内存间交互操作
 
- 8 种操作：原子的、不可在分的
+ 8 种操作：原子的、不可再分的
 
 * lock（锁定）：作用于主内存的变量，把一个变量标识为一条线程独占的状态
 * unlock（解锁）：作用于主内存变量，把一个处于锁定状态的变量释放出来，释放后变量才可以被其他线程锁定。
-* read（读取）：作用于主内存变量，吧一个变量从主内存传输到线程的工作内存中，一边随后 load 动作使用
+* read（读取）：作用于主内存变量，吧一个变量从主内存传输到线程的工作内存中，以便随后 load 动作使用
 * load（载入）：作用于工作内存变量，把 read 操作从主内存中得到的变量值放入工作内存的变量副本中。
 * use（使用）：作用于工作内存变量，把工作内存中一个变量的值传递给执行引擎
-* assign（赋值）：作用于工作内存变量，把一个从执行引擎接收到的值付给工作内存的变量
-*  store（存储）：作用于工作内存变量，把工作内存中一个变量的值传动到主内存中，一边随后的 write 操作使用
+* assign（赋值）：作用于工作内存变量，把一个从执行引擎接收到的值赋给工作内存的变量
+*  store（存储）：作用于工作内存变量，把工作内存中一个变量的值传动到主内存中，以便随后的 write 操作使用
 * write（写入）：作用于主内存变量，把 store 操作从工作内存中得到的变量值放入主内存变量中。
 
- read-->load: should be executed in order(not mecessoryly continuously)
+ read-->load: should be executed in order(not necessoryly continuously)
 
- store-->write should be executed in order(not mecessoryly continuously)
+ store-->write should be executed in order(not necessoryly continuously)
 
  （e.g.: read a, read b, load b, load a)
 

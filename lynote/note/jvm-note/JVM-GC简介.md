@@ -53,8 +53,8 @@ public class Sample
   StackOverflowError(栈深度)
 
   OutOfMemoryError（栈可动态扩展，无法申请足够内存）
-* 各线程共享的内存区域：**方法区**、**Java 堆**
-* 各线程独有的内存区域：**程序计数器**、**虚拟机栈**、**本地方法栈**
+* 各**线程共享**的内存区域：**方法区**、**Java 堆**
+* 各**线程独有**的内存区域：**程序计数器**、**虚拟机栈**、**本地方法栈**
 <!-- ![Runtime-Data-Area](http://coding-geek.com/wp-content/uploads/2015/04/jvm_memory_overview.jpg) -->
 
 ##### 2.3 HotSpot 虚拟机对象

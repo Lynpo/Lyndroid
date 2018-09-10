@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.lynpo.R;
 import com.lynpo.activitylifecycle.TaskAActivity;
+import com.lynpo.androidtouchevent.TouchOrClickActivity;
 import com.lynpo.base.BaseActivity;
 import com.lynpo.base.adapter.BaseRclViewAdapter;
 import com.lynpo.base.adapter.CommonViewHolder;
@@ -19,6 +20,8 @@ import com.lynpo.kotlin.ReturnNullActivity;
 import com.lynpo.video.VideoActivity;
 import com.lynpo.view.CustomViewActivity;
 import com.lynpo.view.MoveViewActivity;
+import com.lynpo.view.circleprogressbar.CircleProgressActivity;
+import com.lynpo.view.circleprogressbar.DrawableCircleProgressActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +55,9 @@ public class HomeActivity extends BaseActivity {
         items.add(new ClassHolder(VideoActivity.class));
         items.add(new ClassHolder(ReturnNullActivity.class));
         items.add(new ClassHolder(JniInvokeActivity.class));
+        items.add(new ClassHolder(TouchOrClickActivity.class));
+        items.add(new ClassHolder(CircleProgressActivity.class));
+        items.add(new ClassHolder(DrawableCircleProgressActivity.class));
 
         mAdapter.setData(items);
     }

@@ -56,6 +56,11 @@ dependencies {
     implementation deps.retrofit.rxjava2adapter
     implementation deps.guava.runtime
 
+    // google room
+    implementation deps.room.runtime
+    implementation deps.room.rxjava2
+    kapt deps.room.compiler
+
     // Dagger dependencies
     kapt deps.dagger.compiler
     implementation deps.dagger.runtime

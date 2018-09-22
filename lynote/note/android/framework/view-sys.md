@@ -14,7 +14,7 @@ CustomView.setAnimation
 
 Activity.setContentView()—> getWindow().setContentView() —> PhoneWindow.setContentView()
 
-Window 何时和 Activiaty 建立联系的？
+Window 何时和 Activity 建立联系的？
 
 Activity.attach() —> mWindow = new PhoneWindow(this, window, activityConfigCallback);
 

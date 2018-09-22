@@ -15,6 +15,7 @@ import com.lynpo.base.BaseActivity;
 import com.lynpo.base.adapter.BaseRclViewAdapter;
 import com.lynpo.base.adapter.CommonViewHolder;
 import com.lynpo.common.ClassHolder;
+import com.lynpo.framework.ipc.Client;
 import com.lynpo.jni.JniInvokeActivity;
 import com.lynpo.kotlin.ReturnNullActivity;
 import com.lynpo.video.VideoActivity;
@@ -58,6 +59,7 @@ public class HomeActivity extends BaseActivity {
         items.add(new ClassHolder(TouchOrClickActivity.class));
         items.add(new ClassHolder(CircleProgressActivity.class));
         items.add(new ClassHolder(DrawableCircleProgressActivity.class));
+        items.add(new ClassHolder(Client.class));
 
         mAdapter.setData(items);
     }

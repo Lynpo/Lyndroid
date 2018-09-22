@@ -36,7 +36,11 @@
         <activity android:name=".jni.JniInvokeActivity" />
         <activity android:name=".androidtouchevent.TouchOrClickActivity" />
         <activity android:name=".view.circleprogressbar.CircleProgressActivity" />
-        <activity android:name=".view.circleprogressbar.DrawableCircleProgressActivity"></activity>
+        <activity android:name=".view.circleprogressbar.DrawableCircleProgressActivity"/>
+        <activity android:name=".framework.ipc.Client" />
+
+        <service android:name=".framework.ipc.LynService"
+            android:process=":lyn"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.lynpo.javas.interfacegramm;
+package com.lynpo.java;
 
 /**
  * Create by fujw on 2018/9/12.
@@ -19,4 +19,9 @@ public interface IInterface {
     };
 
     void getName();
+
+    // After Java 8, method with body, default is required
+    default void throwException(){
+        throw new UnsupportedOperationException("exception");
+    }
 }

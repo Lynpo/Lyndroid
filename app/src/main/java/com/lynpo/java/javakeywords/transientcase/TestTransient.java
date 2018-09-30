@@ -1,4 +1,4 @@
-package com.lynpo.javakeywords.transientcase;
+package com.lynpo.java.javakeywords.transientcase;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

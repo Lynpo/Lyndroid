@@ -1,6 +1,7 @@
 #include <jni.h>
 #include <string>
 #include "lynpo-const.h"
+using namespace std;
 
 const std::string Lynpo_Const::LYNPO_NAME = "Lynpo";
 const char HexCode[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
@@ -9,6 +10,13 @@ const char HexCode[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E
  * Android Studio - Build > Generate Signed APK > ...
  */
 const char *app_signature_sha1 = "8F23CB6BB39860937CF9E2B863C95A1CE1FAA742";
+
+static const char * v_keys_part0[] = {"Hello"};
+static const char * v_keys_part1[] = {", this is"};
+static const char * v_keys_part2[] = {" David"};
+static const string v_str_part0 = "Hello";
+static const string v_str_part1 = ", this is";
+static const string v_str_part2 = " David";
 
 jobject getApplication(JNIEnv *env) {
     jclass localClass = (env)->FindClass("android/app/ActivityThread");
@@ -109,6 +117,12 @@ JNIEXPORT jstring JNICALL Java_com_lynpo_jni_JniVisitor_stringFromJNI(JNIEnv *en
     std::string hello = "Hello from C++, my name is ";
     std::string name = Lynpo_Const::LYNPO_NAME;
     std::string sentence = hello.append(name);
+
+    string other = "\n" + string(v_keys_part0[0]) + v_str_part1 + v_str_part2;
+    string another = string("selif derongI");
+    sentence = sentence + other + "\n" +  another;
+    reverse(another.begin(), another.end());
+    sentence = sentence + "\n" + another;
 
     if (hashSignValid(env, app_signature_sha1)) {
         return env->NewStringUTF(sentence.c_str());

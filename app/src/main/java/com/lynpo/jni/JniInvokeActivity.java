@@ -1,6 +1,7 @@
 package com.lynpo.jni;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.lynpo.R;
@@ -26,13 +27,9 @@ public class JniInvokeActivity extends BaseActivity {
         String javaHashSign = ApkUtil.getCertSHA1(mContext);
         String nativeHashSign = JniVisitor.hashSignFromJNI();
         final String string = JniVisitor.stringFromJNI();
+        Log.d("debug_info", "stringFromJNI:" + string);
 
         signInfo.setText(String.format("javaHashSign:%s\nnativeHashSign:%s", javaHashSign, nativeHashSign));
-        textView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                textView.setText(string);
-            }
-        }, 1200);
+        textView.postDelayed(() -> textView.setText(string), 1200);
     }
 }

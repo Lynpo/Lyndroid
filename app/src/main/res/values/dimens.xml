@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="sp_16">16sp</dimen>
+
     <dimen name="dp_4">4dp</dimen>
     <dimen name="dp_14">14dp</dimen>
+
     <dimen name="color_swatch_large">64.0dip</dimen>
     <dimen name="color_swatch_small">48.0dip</dimen>
     <dimen name="color_swatch_margins_large">8.0dip</dimen>

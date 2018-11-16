@@ -6,5 +6,5 @@
     android:layout_height="48dp"
     android:gravity="center"
     android:padding="@dimen/dp_4"
-    style="@style/NormalTextBold"
+    style="@style/TextNormalBold"
     tools:text="ITEM" />

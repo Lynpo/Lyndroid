@@ -20,7 +20,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:text="Today is Thursday, TITLE"
-            style="@style/NormalTextBold" />
+            style="@style/TextNormalBold" />
         <!--android:onClick="clickBottom"-->
     </LinearLayout>
 
@@ -33,7 +33,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:text="TITLE_"
-        style="@style/NormalTextBold"/>
+        style="@style/TextNormalBold"/>
     <!--android:onClick="clickTop"-->
 
 </RelativeLayout>

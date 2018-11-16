@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toTopOf="@id/jniTextView"
         app:layout_constraintVertical_chainStyle="packed"
         android:text="@string/hello"
-        style="@style/NormalText"
+        style="@style/TextNormal"
         tools:text="HelloWorld"/>
     <TextView
         android:id="@+id/jniTextView"
@@ -26,6 +26,6 @@
         app:layout_constraintTop_toBottomOf="@id/hashSignatureText"
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/hello"
-        style="@style/NormalText"
+        style="@style/TextNormal"
         tools:text="HelloWorld"/>
 </android.support.constraint.ConstraintLayout>

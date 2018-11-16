@@ -8,13 +8,23 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="NormalText" parent="AppTheme">
-        <item name="android:gravity">center</item>
+    <style name="TextNormal" parent="AppTheme">
         <item name="android:textColor">@color/color_333333</item>
-        <item name="android:textSize">@dimen/dp_14</item>
+        <item name="android:textSize">@dimen/sp_14</item>
     </style>
 
-    <style name="NormalTextBold" parent="NormalText">
+    <style name="TextTitle" parent="AppTheme">
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextGray" parent="AppTheme">
+        <item name="android:textColor">@color/color_d9d9d9</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+
+    <style name="TextNormalBold" parent="TextNormal">
         <item name="android:textStyle">bold</item>
     </style>
 

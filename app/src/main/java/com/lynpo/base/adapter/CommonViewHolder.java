@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.lynpo.imageload.ImageLoader;
+import com.lynpo.thdlibs.imageload.ImageLoader;
 import com.lynpo.util.AndroidAPIUtil;
 
 /**

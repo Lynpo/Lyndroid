@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 import com.lynpo.LynpoApp;
 import com.lynpo.R;
 import com.lynpo.base.BaseActivity;
-import com.lynpo.dagger2.model.Swordman;
+import com.lynpo.thdlibs.dagger2.model.Swordman;
 
 import javax.inject.Inject;
 

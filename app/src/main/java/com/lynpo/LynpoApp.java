@@ -2,8 +2,8 @@ package com.lynpo;
 
 import android.content.Context;
 
-import com.lynpo.dagger2.component.ActivityComponent;
-import com.lynpo.dagger2.component.SwordmanComponent;
+import com.lynpo.thdlibs.dagger2.component.ActivityComponent;
+import com.lynpo.thdlibs.dagger2.component.SwordmanComponent;
 
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;

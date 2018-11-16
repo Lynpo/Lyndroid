@@ -1,1 +1,1 @@
-include ':app', ':lynote', ':video', ':lynjava'
+include ':app', ':lynote', ':video', ':lynjava', ':eternal'

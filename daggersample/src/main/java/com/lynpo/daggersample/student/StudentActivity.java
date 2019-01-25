@@ -6,13 +6,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.lynpo.daggersample.R;
-import com.lynpo.daggersample.base.BaseActivity;
+import com.lynpo.daggersample.base.BaseDaggerActivity;
 import com.lynpo.daggersample.model.Student;
 
 import javax.inject.Inject;
 
-//public class StudentActivity extends DaggerAppCompatActivity {
-public class StudentActivity extends BaseActivity implements View.OnClickListener {
+public class StudentActivity extends BaseDaggerActivity implements View.OnClickListener {
 
     @Inject
     String className;

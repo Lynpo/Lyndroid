@@ -1,14 +1,14 @@
 package com.lynpo.daggersample;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.lynpo.daggersample.base.BaseActivity;
 import com.lynpo.daggersample.student.ClassActivity;
+import com.lynpo.daggersample.student.NonDIActivity;
 import com.lynpo.daggersample.student.StudentActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.button1).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
+        findViewById(R.id.button3).setOnClickListener(this);
     }
 
     @Override
@@ -24,10 +25,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = v.getId();
         switch (id) {
             case R.id.button1:
-                startActivity(new Intent(this, StudentActivity.class));
+                start(mContext, StudentActivity.class);
                 break;
             case R.id.button2:
-                startActivity(new Intent(this, ClassActivity.class));
+                start(mContext, ClassActivity.class);
+                break;
+            case R.id.button3:
+                start(mContext, NonDIActivity.class);
                 break;
         }
     }

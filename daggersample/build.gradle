@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+
+
+
+    defaultConfig {
+        applicationId "com.lynpo.daggersample"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // support libs
+    implementation deps.support.app_compat
+    implementation deps.support.v4
+    implementation deps.support.design
+    implementation deps.support.recyclerview
+    implementation deps.support.annotations
+    implementation deps.support.constraint_layout
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation deps.junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.espresso.core
+
+
+    // rxJava, Gson, OkHttp, retrofit
+    implementation deps.rxjava2
+    implementation deps.rx_android
+    implementation deps.gson
+    implementation deps.okhttp3
+    implementation deps.okhttp3_mock
+    implementation deps.okhttp_logging_interceptor
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava2adapter
+    implementation deps.guava.runtime
+
+    // Dagger dependencies
+    annotationProcessor deps.dagger.compiler
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android
+    implementation deps.dagger.android_support
+    annotationProcessor deps.dagger.android_support_compiler
+    implementation deps.kotlin.stdlib
+}

@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
@@ -7,7 +7,6 @@ android {
 
 
     defaultConfig {
-        applicationId "com.lynpo.eternal"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -28,16 +27,47 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.kotlin.stdlib
-    // support libs
-    implementation deps.support.app_compat
-    implementation deps.support.v4
-    implementation deps.support.design
-    implementation deps.support.recyclerview
-    implementation deps.support.annotations
-    implementation deps.support.constraint_layout
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // support libs
+    api deps.support.app_compat
+    api deps.support.v4
+    api deps.support.design
+    api deps.support.recyclerview
+    api deps.support.annotations
+    api deps.support.constraint_layout
+
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // rxJava, Gson, OkHttp, retrofit
+    api deps.rxjava2
+    api deps.rx_android
+    api deps.gson
+    api deps.okhttp3
+    api deps.okhttp3_mock
+    api deps.okhttp_logging_interceptor
+    api deps.retrofit.runtime
+    api deps.retrofit.gson
+    api deps.retrofit.rxjava2adapter
+    api deps.guava.runtime
+
+    // google room
+//    kapt deps.room.compiler
+    api deps.room.runtime
+    api deps.room.rxjava2
+
+    // Dagger dependencies
+//    kapt deps.dagger.compiler
+//    kapt deps.dagger.android_support_compiler
+    api deps.dagger.runtime
+    api deps.dagger.android
+    api deps.dagger.android_support
+    api deps.kotlin.stdlib
+
+    // image lib: Glide
+//    kapt deps.glide.compiler
+    api deps.glide.runtime
+
+//    implementation 'org.webrtc:google-webrtc:1.0.22672'
 }

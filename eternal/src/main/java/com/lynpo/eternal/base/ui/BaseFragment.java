@@ -1,4 +1,4 @@
-package com.lynpo.base;
+package com.lynpo.eternal.base.ui;
 
 import android.support.v4.app.Fragment;
 

@@ -5,7 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import com.lynpo.R
-import com.lynpo.base.BaseActivity
+import com.lynpo.eternal.base.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_schema.*
 
 class SchemaActivity : BaseActivity() {

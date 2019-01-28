@@ -2,8 +2,7 @@ package com.lynpo.temppage
 
 import android.os.Bundle
 import com.lynpo.R
-import com.lynpo.R.id.*
-import com.lynpo.base.BaseActivity
+import com.lynpo.eternal.base.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_include_a_view.*
 import kotlinx.android.synthetic.main.view_text.view.*
 

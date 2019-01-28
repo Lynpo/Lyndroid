@@ -9,8 +9,8 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.SeekBar
 import com.lynpo.R
-import com.lynpo.base.BaseActivity
-import com.lynpo.base.BaseFragment
+import com.lynpo.eternal.base.ui.BaseActivity
+import com.lynpo.eternal.base.ui.BaseFragment
 import com.lynpo.view.circleprogressbar.colorpicker.ColorPickerDialog
 
 

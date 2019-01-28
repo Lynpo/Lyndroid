@@ -5,8 +5,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.lynpo.R;
-import com.lynpo.annos.ActivityConfig;
-import com.lynpo.base.BaseActivity;
+import com.lynpo.eternal.annos.ActivityConfig;
+import com.lynpo.eternal.base.ui.BaseActivity;
 import com.lynpo.util.ApkUtil;
 
 @ActivityConfig(name = "JniInvokeActivity")

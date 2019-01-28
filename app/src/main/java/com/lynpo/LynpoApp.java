@@ -1,12 +1,17 @@
 package com.lynpo;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 
 import com.lynpo.thdlibs.dagger2.component.ActivityComponent;
+import com.lynpo.thdlibs.dagger2.component.DaggerAppComponent;
 import com.lynpo.thdlibs.dagger2.component.SwordmanComponent;
 
-import dagger.android.AndroidInjector;
-import dagger.android.support.DaggerApplication;
+import javax.inject.Inject;
+
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
 
 
 /**
@@ -14,14 +19,20 @@ import dagger.android.support.DaggerApplication;
  * *
  * LynpoApp
  */
-public class LynpoApp extends DaggerApplication {
+public class LynpoApp extends Application implements HasActivityInjector {
 
     ActivityComponent activityComponent;
     SwordmanComponent swordmanComponent;
 
+    @Inject
+    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        DaggerAppComponent
+//                .builder().appModule(new AppModule()).build().inject(this);
+                .create().inject(this);
 //        activityComponent = DaggerActivityComponent.builder().buld();
 //        activityComponent = DaggerActivityComponent.builder().buld().swordmanComponent(DaggerSwordmanComponent.builder().build()).build();
     }
@@ -34,8 +45,13 @@ public class LynpoApp extends DaggerApplication {
         return activityComponent;
     }
 
+//    @Override
+//    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+//        return null;
+//    }
+
     @Override
-    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-        return null;
+    public DispatchingAndroidInjector<Activity> activityInjector() {
+        return dispatchingAndroidInjector;
     }
 }

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.lynpo.R
-import com.lynpo.base.BaseFragment
+import com.lynpo.eternal.base.ui.BaseFragment
 
 
 /**

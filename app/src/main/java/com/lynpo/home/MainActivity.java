@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.lynpo.R;
-import com.lynpo.base.BaseActivity;
+import com.lynpo.eternal.base.ui.BaseActivity;
 import com.lynpo.widget.StarView;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {

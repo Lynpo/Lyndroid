@@ -11,15 +11,17 @@ import android.util.Log;
 import com.lynpo.R;
 import com.lynpo.activitylifecycle.TaskAActivity;
 import com.lynpo.androidtouchevent.TouchOrClickActivity;
-import com.lynpo.base.BaseActivity;
 import com.lynpo.base.adapter.BaseRclViewAdapter;
 import com.lynpo.base.adapter.CommonViewHolder;
 import com.lynpo.common.ClassHolder;
+import com.lynpo.eternal.base.ui.BaseActivity;
 import com.lynpo.framework.ipc.IPCClient;
 import com.lynpo.jni.JniInvokeActivity;
 import com.lynpo.kotlin.ReturnNullActivity;
 import com.lynpo.temppage.IncludeViewTest;
 import com.lynpo.temppage.SchemaActivity;
+import com.lynpo.thdlibs.dagger2.sample.DaggerSample2Activity;
+import com.lynpo.thdlibs.dagger2.sample.DaggerSampleActivity;
 import com.lynpo.video.VideoActivity;
 import com.lynpo.view.CustomViewActivity;
 import com.lynpo.view.MoveViewActivity;
@@ -51,7 +53,6 @@ public class HomeActivity extends BaseActivity {
         mRecyclerView.setLayoutManager(layoutManager);
 
         List<ClassHolder> items = new ArrayList<>();
-        items.add(new ClassHolder(MainActivity.class));
         items.add(new ClassHolder(TaskAActivity.class));
         items.add(new ClassHolder(MoveViewActivity.class));
 
@@ -66,7 +67,8 @@ public class HomeActivity extends BaseActivity {
         items.add(new ClassHolder(DrawableCircleProgressActivity.class));
         items.add(new ClassHolder(SchemaActivity.class));
         items.add(new ClassHolder(IPCClient.class));
-//        items.add(new ClassHolder(SampleActivity.class));
+        items.add(new ClassHolder(DaggerSampleActivity.class));
+        items.add(new ClassHolder(DaggerSample2Activity.class));
 
         mAdapter.setData(items);
 

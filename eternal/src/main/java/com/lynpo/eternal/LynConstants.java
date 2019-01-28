@@ -1,4 +1,4 @@
-package com.lynpo;
+package com.lynpo.eternal;
 
 /**
  * LynConstants

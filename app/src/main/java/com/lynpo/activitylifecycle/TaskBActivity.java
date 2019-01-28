@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.lynpo.R;
-import com.lynpo.base.BaseActivity;
+import com.lynpo.eternal.base.ui.BaseActivity;
 
 public class TaskBActivity extends BaseActivity {
 

@@ -2,7 +2,7 @@ package com.lynpo.view.circleprogressbar
 
 import android.os.Bundle
 import com.lynpo.R
-import com.lynpo.base.BaseActivity
+import com.lynpo.eternal.base.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_drawable_circle_progress.*
 
 class DrawableCircleProgressActivity : BaseActivity() {

@@ -11,7 +11,7 @@ import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.lynpo.base.BaseActivity;
+import com.lynpo.eternal.base.ui.BaseActivity;
 
 /**
  * Create by fujw on 2018/9/22.

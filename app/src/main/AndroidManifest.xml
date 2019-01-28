@@ -71,8 +71,8 @@
         <activity android:name=".view.circleprogressbar.DrawableCircleProgressActivity" />
         <activity android:name=".framework.ipc.IPCClient" />
         <activity android:name=".temppage.SchemaActivity" />
-        <activity android:name=".thdlibs.dagger2.sample.Sample2Activity"/>
-        <activity android:name=".thdlibs.dagger2.sample.SampleActivity" />
+        <activity android:name=".thdlibs.dagger2.sample.DaggerSample2Activity"/>
+        <activity android:name=".thdlibs.dagger2.sample.DaggerSampleActivity" />
 
         <service android:name=".framework.ipc.LynService"
             android:process=":lyn"/>

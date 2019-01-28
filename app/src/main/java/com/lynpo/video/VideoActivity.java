@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.lynpo.R;
-import com.lynpo.base.BaseActivity;
+import com.lynpo.eternal.base.ui.BaseActivity;
 
 public class VideoActivity extends BaseActivity {
 

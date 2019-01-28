@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.SparseArray
 import com.lynpo.R
-import com.lynpo.base.BaseActivity
+import com.lynpo.eternal.base.ui.BaseActivity
 import com.lynpo.kotlin.model.Item
 
 class ReturnNullActivity : BaseActivity() {

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.google.gson.Gson;
 import com.lynpo.LynpoApp;
 import com.lynpo.R;
-import com.lynpo.base.BaseActivity;
+import com.lynpo.eternal.base.ui.BaseActivity;
 import com.lynpo.thdlibs.dagger2.model.Swordman;
 
 import javax.inject.Inject;

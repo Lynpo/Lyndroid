@@ -1,16 +1,14 @@
 package com.lynpo.base;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
+import com.lynpo.LynConstants;
 import com.lynpo.annos.ActivityConfig;
-
-import dagger.android.AndroidInjector;
-import dagger.android.HasActivityInjector;
 
 
 /**
@@ -18,7 +16,7 @@ import dagger.android.HasActivityInjector;
  * *
  * BaseActivity
  */
-public class BaseActivity extends AppCompatActivity implements HasActivityInjector {
+public class BaseActivity extends AppCompatActivity {
 
     protected Context mContext;
 
@@ -35,13 +33,11 @@ public class BaseActivity extends AppCompatActivity implements HasActivityInject
             Intent starter = new Intent(context, Class.forName(targetName));
             if (starter.resolveActivity(context.getPackageManager()) != null) {
                 context.startActivity(starter);
+            } else {
+                Log.e(LynConstants.LOG_TAG, "cannot resolve target, class " + targetName + " is null");
             }
-        } catch (ClassNotFoundException ignored) {
+        } catch (ClassNotFoundException e) {
+            Log.e(LynConstants.LOG_TAG, e.getMessage());
         }
-    }
-
-    @Override
-    public AndroidInjector<Activity> activityInjector() {
-        return null;
     }
 }

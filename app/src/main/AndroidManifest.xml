@@ -5,20 +5,50 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".LynpoApp"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".home.HomeActivity">
+        <activity android:name=".home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home.MainActivity" />
+        <activity android:name=".home.HomeActivity"/>
+
+        <activity
+            android:name=".home.ExportCallActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+
+            <!-- 拦截 自定义 协议 lynpo-schema 格式 uri -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="lynpo-schema" />
+            </intent-filter>
+            <!-- 拦截 http 协议,域名格式为 "lynpo.com" 子路径为 "/path/" 的 uri -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="lynpo.com"
+                    android:pathPrefix="/path/"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
         <activity android:name=".detail.DetailActivity" />
         <activity android:name=".view.MoveViewActivity" />
         <activity android:name=".view.CustomViewActivity" />
@@ -36,13 +66,15 @@
         <activity android:name=".jni.JniInvokeActivity" />
         <activity android:name=".androidtouchevent.TouchOrClickActivity" />
         <activity android:name=".view.circleprogressbar.CircleProgressActivity" />
-        <activity android:name=".view.circleprogressbar.DrawableCircleProgressActivity"/>
-        <activity android:name=".framework.ipc.Client" />
+        <activity android:name=".view.circleprogressbar.DrawableCircleProgressActivity" />
+        <activity android:name=".framework.ipc.IPCClient" />
+        <activity android:name=".temppage.SchemaActivity" />
+        <activity android:name=".thdlibs.dagger2.sample.Sample2Activity"/>
+        <activity android:name=".thdlibs.dagger2.sample.SampleActivity" />
 
         <service android:name=".framework.ipc.LynService"
             android:process=":lyn"/>
 
-        <activity android:name=".temppage.SchemaActivity"></activity>
     </application>
 
 </manifest>

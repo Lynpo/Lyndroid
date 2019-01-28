@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.lynpo.R;
 import com.lynpo.base.BaseActivity;
-import com.lynpo.view.constraintlayout.ConstraintLayoutActivity;
 import com.lynpo.widget.StarView;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -85,15 +84,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        VideoTrack t = factory.createVideoTrack(trackName, s);
 //        localStream.addTrack(t);
 
+        starView.setOnClickListener(this);
         textView.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.tv) {
-            ConstraintLayoutActivity.start(this);
-//            startActivity(new Intent(mContext, IncludeViewTest.class));
+        switch (id) {
+            case R.id.tv:
+            case R.id.starView:
+                start(mContext, HomeActivity.class.getName());
+                break;
         }
     }
 

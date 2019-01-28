@@ -38,7 +38,7 @@
 final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
                boolean evict) {
     Node<K,V>[] tab; Node<K,V> p; int n, i;
-    // 未初始化则初始化，n 位 tab 容量，是 2 的 x 次幂
+    // 未初始化则初始化，n 为 tab 容量，是 2 的 x 次幂
     if ((tab = table) == null || (n = tab.length) == 0)
         n = (tab = resize()).length;
     // 篮子（桶）中无此值，新建：n 是 2 的 x 次幂，（n - 1 & hash）将 hash 截取出低 x 位

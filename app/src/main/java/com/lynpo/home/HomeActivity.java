@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.View;
+import android.util.Log;
 
 import com.lynpo.R;
 import com.lynpo.activitylifecycle.TaskAActivity;
@@ -15,15 +15,17 @@ import com.lynpo.base.BaseActivity;
 import com.lynpo.base.adapter.BaseRclViewAdapter;
 import com.lynpo.base.adapter.CommonViewHolder;
 import com.lynpo.common.ClassHolder;
-import com.lynpo.framework.ipc.Client;
+import com.lynpo.framework.ipc.IPCClient;
 import com.lynpo.jni.JniInvokeActivity;
 import com.lynpo.kotlin.ReturnNullActivity;
+import com.lynpo.temppage.IncludeViewTest;
 import com.lynpo.temppage.SchemaActivity;
 import com.lynpo.video.VideoActivity;
 import com.lynpo.view.CustomViewActivity;
 import com.lynpo.view.MoveViewActivity;
 import com.lynpo.view.circleprogressbar.CircleProgressActivity;
 import com.lynpo.view.circleprogressbar.DrawableCircleProgressActivity;
+import com.lynpo.view.constraintlayout.ConstraintLayoutActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,8 @@ public class HomeActivity extends BaseActivity {
         items.add(new ClassHolder(TaskAActivity.class));
         items.add(new ClassHolder(MoveViewActivity.class));
 
+        items.add(new ClassHolder(ConstraintLayoutActivity.class));
+        items.add(new ClassHolder(IncludeViewTest.class));
         items.add(new ClassHolder(CustomViewActivity.class));
         items.add(new ClassHolder(VideoActivity.class));
         items.add(new ClassHolder(ReturnNullActivity.class));
@@ -61,9 +65,29 @@ public class HomeActivity extends BaseActivity {
         items.add(new ClassHolder(CircleProgressActivity.class));
         items.add(new ClassHolder(DrawableCircleProgressActivity.class));
         items.add(new ClassHolder(SchemaActivity.class));
-        items.add(new ClassHolder(Client.class));
+        items.add(new ClassHolder(IPCClient.class));
+//        items.add(new ClassHolder(SampleActivity.class));
 
         mAdapter.setData(items);
+
+        towLongNumCompare();
+        modeTest();
+    }
+
+    private void modeTest() {
+        Log.d("DEBUG_INFO", "0 % 30 = " + (0 % 30));
+    }
+
+    private void towLongNumCompare() {
+        long a = 1000;
+        long b = 1000;
+        if (a > b * 0.95) {
+            Log.d("DEBUG_INFO", String.format("%s > %s * 0.95", a, b));
+        } else if (a < b * 0.95) {
+            Log.d("DEBUG_INFO", String.format("%s < %s * 0.95", a, b));
+        } else {
+            Log.d("DEBUG_INFO", String.format("%s = %s * 0.95", a, b));
+        }
     }
 
     public void onGridItemClick(String classCanonicalName) {
@@ -94,12 +118,9 @@ public class HomeActivity extends BaseActivity {
             }
 
             holder.setText(R.id.textView, item.n_class.getSimpleName());
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onGridItemClick(item.n_class.getCanonicalName());
-                }
-            });
+            holder.itemView.setOnClickListener(v ->
+                    onGridItemClick(item.n_class.getCanonicalName())
+            );
         }
     }
 }

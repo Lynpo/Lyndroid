@@ -2,13 +2,14 @@ package com.lynpo.view.constraintlayout;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lynpo.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ConstraintLayoutActivity extends AppCompatActivity {
 

@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.StatFs;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -15,6 +13,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import java.io.File;
+
+import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 /**
  * Created by fujw on 2016/12/20.

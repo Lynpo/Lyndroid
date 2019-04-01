@@ -5,12 +5,13 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.lynpo.R;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 
 /**

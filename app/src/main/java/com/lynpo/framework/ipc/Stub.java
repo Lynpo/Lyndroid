@@ -3,9 +3,10 @@ package com.lynpo.framework.ipc;
 import android.os.Binder;
 import android.os.Parcel;
 import android.os.RemoteException;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 
 /**

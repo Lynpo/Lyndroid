@@ -3,9 +3,6 @@ package com.lynpo.home;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 
 import com.lynpo.R;
@@ -31,6 +28,10 @@ import com.lynpo.view.constraintlayout.ConstraintLayoutActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 /**
  * Create by fujw on 2018/4/1.
@@ -74,6 +75,52 @@ public class HomeActivity extends BaseActivity {
 
         towLongNumCompare();
         modeTest();
+
+        int index, value;
+        for (int i = 2; ; i++) {
+            if ((value = fibonacci(i)) >= 5000) {
+                index = i;
+                break;
+            }
+        }
+
+        Log.d("DEBUG_INFO", "The " + index + "-th of fibonacci array is bigger than 5000, which is " + value);
+    }
+
+    /**
+     * 斐波那契数列
+     * Java通项公式版：
+     * reference to: https://zh.wikipedia.org/wiki/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97
+     * @param n index
+     * @return value
+     */
+    public int fibonacci(int n){
+        if(n<2){
+            return n;
+        }else {
+            return fibonacci(n-1)+fibonacci(n-2);
+        }
+    }
+
+    /**
+     * 斐波那契数列
+     * Java语言快捷版：
+     * reference to: https://zh.wikipedia.org/wiki/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97
+     * @param n index
+     * @return value
+     */
+    public int quicklyFibonacci(int n){
+        if(n<2){
+            return n;
+        }else {
+            int[] ans = new int[n];
+            ans[0] = 1;
+            ans[1] = 2;
+            for(int i=2;i<n;i++) {
+                ans[i]=ans[i-1]+ans[i-2];
+            }
+            return ans[n-1];
+        }
     }
 
     private void modeTest() {

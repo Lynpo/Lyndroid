@@ -3,7 +3,7 @@ package com.lynpo.video;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;

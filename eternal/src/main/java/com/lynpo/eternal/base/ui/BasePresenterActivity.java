@@ -1,12 +1,13 @@
 package com.lynpo.eternal.base.ui;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.lynpo.eternal.base.mvp.BasePresenter;
 import com.lynpo.eternal.base.mvp.IView;
 
 import javax.inject.Inject;
+
+import androidx.annotation.Nullable;
 
 /**
  * BasePresenterActivity

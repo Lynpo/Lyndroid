@@ -3,7 +3,6 @@ package com.lynpo.home;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -16,6 +15,8 @@ import android.widget.TextView;
 import com.lynpo.R;
 import com.lynpo.eternal.base.ui.BaseActivity;
 import com.lynpo.widget.StarView;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 

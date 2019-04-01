@@ -3,11 +3,12 @@ package com.lynpo.view;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.lynpo.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CustomViewActivity extends AppCompatActivity {
 

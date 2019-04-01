@@ -2,12 +2,13 @@ package com.lynpo.thdlibs.imageload;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.DrawableRes;
-import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
+import androidx.annotation.DrawableRes;
+import androidx.fragment.app.Fragment;
 
 public class ImageLoader {
 
@@ -15,7 +16,7 @@ public class ImageLoader {
         Glide.with(activity).load(url).apply(RequestOptions.circleCropTransform()).into(view);
     }
 
-    public static void loadCircleImage(android.support.v4.app.Fragment fragment , String url , ImageView view) {
+    public static void loadCircleImage(Fragment fragment , String url , ImageView view) {
         Glide.with(fragment).load(url).apply(RequestOptions.circleCropTransform()).into(view);
     }
 

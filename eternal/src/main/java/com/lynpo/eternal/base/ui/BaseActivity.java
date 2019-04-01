@@ -3,12 +3,13 @@ package com.lynpo.eternal.base.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.lynpo.eternal.LynConstants;
 import com.lynpo.eternal.annos.ActivityConfig;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 /**

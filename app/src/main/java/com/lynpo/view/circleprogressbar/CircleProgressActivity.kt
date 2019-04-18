@@ -71,7 +71,7 @@ class CircleProgressActivity : BaseActivity() {
                     Color.DKGRAY, 3, 2)
 
             colorPickerDialog.setOnColorSelectedListener { color -> circleProgressBar.color = color }
-            button.setOnClickListener { colorPickerDialog.show(fragmentManager, "color_picker") }
+            button.setOnClickListener { colorPickerDialog.show(fragmentManager!!, "color_picker") }
             seekBarProgress.progress = circleProgressBar.progress.toInt()
             seekBarProgress.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {

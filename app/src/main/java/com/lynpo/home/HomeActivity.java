@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.lynpo.R;
 import com.lynpo.activitylifecycle.TaskAActivity;
 import com.lynpo.androidtouchevent.TouchOrClickActivity;
@@ -19,19 +23,17 @@ import com.lynpo.temppage.IncludeViewTest;
 import com.lynpo.temppage.SchemaActivity;
 import com.lynpo.thdlibs.dagger2.sample.DaggerSample2Activity;
 import com.lynpo.thdlibs.dagger2.sample.DaggerSampleActivity;
+import com.lynpo.usualcase.UsualCaseActivity;
 import com.lynpo.video.VideoActivity;
 import com.lynpo.view.CustomViewActivity;
 import com.lynpo.view.MoveViewActivity;
+import com.lynpo.view.animation.AnimationActivity;
 import com.lynpo.view.circleprogressbar.CircleProgressActivity;
 import com.lynpo.view.circleprogressbar.DrawableCircleProgressActivity;
 import com.lynpo.view.constraintlayout.ConstraintLayoutActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 /**
  * Create by fujw on 2018/4/1.
@@ -70,6 +72,8 @@ public class HomeActivity extends BaseActivity {
         items.add(new ClassHolder(IPCClient.class));
         items.add(new ClassHolder(DaggerSampleActivity.class));
         items.add(new ClassHolder(DaggerSample2Activity.class));
+        items.add(new ClassHolder(AnimationActivity.class));
+        items.add(new ClassHolder(UsualCaseActivity.class));
 
         mAdapter.setData(items);
 

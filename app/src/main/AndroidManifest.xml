@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
+        <activity android:name=".view.animation.AnimationActivity" />
         <activity android:name=".home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home.HomeActivity"/>
-
+        <activity android:name=".home.HomeActivity" />
         <activity
             android:name=".home.ExportCallActivity"
             android:exported="true"
@@ -71,12 +71,13 @@
         <activity android:name=".view.circleprogressbar.DrawableCircleProgressActivity" />
         <activity android:name=".framework.ipc.IPCClient" />
         <activity android:name=".temppage.SchemaActivity" />
-        <activity android:name=".thdlibs.dagger2.sample.DaggerSample2Activity"/>
+        <activity android:name=".thdlibs.dagger2.sample.DaggerSample2Activity" />
         <activity android:name=".thdlibs.dagger2.sample.DaggerSampleActivity" />
+        <activity android:name=".usualcase.UsualCaseActivity" />
 
-        <service android:name=".framework.ipc.LynService"
-            android:process=":lyn"/>
-
+        <service
+            android:name=".framework.ipc.LynService"
+            android:process=":lyn" />
     </application>
 
 </manifest>

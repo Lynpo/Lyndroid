@@ -42,12 +42,12 @@ class ContainerFragment : BaseFragment() {
             return mTitle[position]
         }
 
-        override fun getItem(position: Int): Fragment? {
+        override fun getItem(position: Int): Fragment {
             when (position) {
                 0 -> return InnerFragment.newInstance()
                 1 -> return InnerFragment.newInstance()
             }
-            return null
+            return InnerFragment.newInstance()
         }
 
         override fun getCount(): Int {

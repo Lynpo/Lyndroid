@@ -38,7 +38,10 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    //dagger_compiler
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    //compilers
     kapt deps.dagger.compiler
     kapt deps.dagger.android_support_compiler
     kapt deps.glide.compiler

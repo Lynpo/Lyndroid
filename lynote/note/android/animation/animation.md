@@ -62,7 +62,7 @@ colorAnimator.start()
 
 ###### Animator 相关类图
 
- ![animator](../img/animator-uml.png)
+ ![animator](https://github.com/Lynpo/Lyndroid/blob/develop/lynote/note/img/animator-uml.png)
 
 
 #### 4. 使用示例

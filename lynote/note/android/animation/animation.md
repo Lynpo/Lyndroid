@@ -4,45 +4,33 @@
 
 #### 1. 动画概述
 
-方式：渐隐渐现(Alpha)、移动(Translate)、伸缩(Scale)、旋转(Rotate)
+ * 视图静态到动态
+ * 分类：帧动画，补间动画，**属性动画**
+ * 效果：渐隐渐现(Alpha)、移动(Translate)、伸缩(Scale)、旋转(Rotate) 等
+ * 属性动画：背景色等属性，自定义 View 属性修改，理论上任意对象的任意属性
 
-相关对象：
+相关类
 * View, Animation/Animator
 * TimeInterpolator
 * TypeEvaluator(IntEvaluator, FloatEvaluator, ArgbEvaluator)
 
 ##### 2. 动画实现过程
 
-所需知识  
-View, 平面坐标系，牛顿第一、第二运动定律
+所需知识：View, 平面坐标系，牛顿第一、第二运动定律
 
  * 空间维度
  * 时间维度
 
-###### 2.1 时间插值器 TimeInterpolator —— 时间维度
-
-**设计**
-
-1. 接口 Interpolator
-2. 方法 float getInterpolation(float input);
-3. 参数 input --> 时间流失参数： drawingTime  **draw() 方法提供**
-
-  * 线性插值器（LinearInterpolator）
-  * 加速减速插值器(AccelerateInterpolator, DecelerateInterpolator)
-
-Interpolator 类图
-
-![Interpolator](https://github.com/Lynpo/Lyndroid/blob/develop/lynote/note/img/interpolator.png)
-
-
-###### 2.2 动画启动
+###### 2.1 动画启动
 
 时间插值器与动画协作工作：动画对象持有时间插值器的引用。
 
 **一系列 View 的方法调用**
 
+**绘制时间参数流向 drawingTime**
 ```
 // 1. startAnimation 方法将动画设置到 View 中，向 ViewGroup 请求刷新视图
+
 View.startAnimation(Animation animation)
 
 ...
@@ -79,7 +67,13 @@ applyLegacyAnimation() {
 
 #### 3. 属性动画
 
-**属性动画是不断重复修改 View 的属性的过程**
+**属性动画是不断重复修改对象（通常是 View 对象）的属性的过程**
+
+**View 的几个属性**
+
+ * "rotationX", "scaleX", "alpha", translationX
+ * ...
+ * any property
 
 总体设计
 
@@ -108,12 +102,20 @@ applyLegacyAnimation() {
 
  TypeEvaluator 根据当前属性改变百分比计算改变后的属性值，IntEvaluator, FloatEvaluator, ArgbEvaluator, TimeInterpolator 根据时间流逝百分比计算当前属性改变百分比。
 
-###### 3.1 View 的几个属性
+###### 3.1 时间插值器 TimeInterpolator —— 时间维度
 
- * "rotationX", "rotationY", "rotation"
- * "scaleX", "scaleY"
- * "alpha"
- * "translationX", "translationY"
+ **设计**
+
+ 1. 接口 Interpolator
+ 2. 方法 float getInterpolation(float input);
+ 3. 参数 input --> 时间流失参数： drawingTime  **draw() 方法提供**
+
+   * 线性插值器（LinearInterpolator）
+   * 加速减速插值器(AccelerateInterpolator, DecelerateInterpolator)
+
+ Interpolator 类图
+
+ ![Interpolator](https://github.com/Lynpo/Lyndroid/blob/develop/lynote/note/img/interpolator.png)
 
 ###### 3.2 关键过程
 
@@ -131,7 +133,7 @@ colorAnimator.start()
 
 **源码**
 
-创建
+创建，**关键参数流向：values**
 ```
 // class: ObjectAnimator
 public static ObjectAnimator ofInt(Object target, String propertyName, int... values) {
@@ -208,24 +210,42 @@ private void start(boolean playBackwards) {
 
  ![animator](https://github.com/Lynpo/Lyndroid/blob/develop/lynote/note/img/animator_design.png)
 
+#### 4. View 属性动画的便捷使用 ViewPropertyAnimator
 
-#### 4. 使用示例
+```
+View#animate()
+
+public ViewPropertyAnimator animate() {
+    if (mAnimator == null) {
+        mAnimator = new ViewPropertyAnimator(this);
+    }
+    return mAnimator;
+}
+```
+
+上文实例实现：
+```
+viewTarget.animate().scaleX(0.3f).setDuration(1000);
+```
+
+#### 5. 使用示例
 
 
-### 5. 属性动画的设计思想
+### 属性动画的设计
 
-###### 5.1 角色设计
+###### 1 角色设计
 
  * 区分时间维度，空间维度
  * 关键参数流向：动画执行时间，View 绘制时间
- * 单一职责：
+ * 职责规划：
   * 插值器：将动画的速率计算封装到一个抽象（Interpolator）中
+  * 属性值计算：TypeEvalueator
   * 动画对象 Animator：创建，调度，启动
   * 属性管理 PropertyValuesHolder
   * 关键帧计算保存：KeyFrameSet
  * 动画分类：ScaleAnimation, RotateAnimation, TranslateAnimation,...
 
-##### 5.2 策略模式
+##### 2 策略模式
 
 策略模式图示
 

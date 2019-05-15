@@ -14,6 +14,18 @@ class AnimationActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animation)
+
+        btnAnimation.setOnClickListener {
+            displayMultiAnimation()
+        }
+
+        ballAnimation.setOnClickListener {
+            displayBallAnimation()
+        }
+    }
+
+    private fun displayBallAnimation() {
+        ballView.startAnimation()
     }
 
     override fun onResume() {

@@ -253,4 +253,10 @@ viewTarget.animate().scaleX(0.3f).setDuration(1000);
 
 属性动画中的时间插值器：TimeInterpolator
 
+---
+**附录**
+
+参考：《Android 设计模式解析与实战》
+
+
 E.O.F

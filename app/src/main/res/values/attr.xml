@@ -4,6 +4,13 @@
         <attr name="rect_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="BallView">
+        <attr name="orientation" format="integer">
+            <enum name="HORIZONTAL" value="0" />
+            <enum name="VERTICAL" value="1" />
+        </attr>
+    </declare-styleable>
+
     <declare-styleable name="CircleProgressBar">
         <attr name="min" format="integer" />
         <attr name="max" format="integer" />

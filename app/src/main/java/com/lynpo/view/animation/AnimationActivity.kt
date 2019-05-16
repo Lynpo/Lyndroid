@@ -22,10 +22,18 @@ class AnimationActivity : BaseActivity() {
         ballAnimation.setOnClickListener {
             displayBallAnimation()
         }
+
+        fallAnimation.setOnClickListener {
+            displayFallAnimation()
+        }
     }
 
     private fun displayBallAnimation() {
         ballView.startAnimation()
+    }
+
+    private fun displayFallAnimation() {
+        ballViewFall.startFallAnimation()
     }
 
     override fun onResume() {

@@ -31,6 +31,18 @@
         style="@style/TextNormal"/>
 
     <Button
+        android:id="@+id/fallAnimation"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/btnAnimation"
+        app:layout_constraintTop_toBottomOf="@id/btnAnimation"
+        app:layout_constraintEnd_toStartOf="@id/btnAnimation"
+        android:layout_marginEnd="20dp"
+        android:text="坠落"
+        style="@style/TextNormal"/>
+
+    <Button
         android:id="@+id/ballAnimation"
         android:layout_width="80dp"
         android:layout_height="40dp"
@@ -51,7 +63,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
-        android:text="我瘪了哦"
+        android:text="我瘪了"
         style="@style/TextNormal"/>
 
     <View
@@ -71,7 +83,7 @@
         app:layout_constraintTop_toTopOf="@id/lineX"
         app:layout_constraintBottom_toBottomOf="@id/lineX"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="17dp"
         android:background="#ebebeb"/>
 
     <com.lynpo.view.animation.BallView
@@ -81,7 +93,17 @@
         app:layout_constraintTop_toTopOf="@id/lineX"
         app:layout_constraintBottom_toBottomOf="@id/lineX"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:orientation="HORIZONTAL"/>
+
+    <com.lynpo.view.animation.BallView
+        android:id="@+id/ballViewFall"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:orientation="VERTICAL"/>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -89,7 +111,8 @@
         app:layout_constraintTop_toBottomOf="@id/tvAnimationSet"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="240dp">
+        android:layout_marginTop="240dp"
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/dragView"

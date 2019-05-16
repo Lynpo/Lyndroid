@@ -18,16 +18,28 @@
         android:text="看我变脸"
         style="@style/TextNormal"/>
 
-    <TextView
+    <Button
         android:id="@+id/btnAnimation"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/tvAnimationSet"
+        app:layout_constraintTop_toBottomOf="@id/tvAnimation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
         android:text="表演开始"
+        style="@style/TextNormal"/>
+
+    <TextView
+        android:id="@+id/tvAnimationSet"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/btnAnimation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="我瘪了"
         style="@style/TextNormal"/>
 
     <Button
@@ -52,18 +64,6 @@
         app:layout_constraintStart_toEndOf="@id/btnAnimation"
         android:layout_marginStart="20dp"
         android:text="绕弯子"
-        style="@style/TextNormal"/>
-
-    <TextView
-        android:id="@+id/tvAnimationSet"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/tvAnimation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
-        android:text="我瘪了"
         style="@style/TextNormal"/>
 
     <View

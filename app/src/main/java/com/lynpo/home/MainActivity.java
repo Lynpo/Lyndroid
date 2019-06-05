@@ -12,11 +12,12 @@ import android.view.ViewParent;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.lynpo.R;
 import com.lynpo.eternal.base.ui.BaseActivity;
+import com.lynpo.view.shape.TipTextView;
 import com.lynpo.widget.StarView;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -35,9 +36,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         ConstraintLayout constraintLayout = findViewById(R.id.parent);
 //        LinearLayout linearLayout = findViewById(R.id.linearLayout);
+        TipTextView tipTextView = findViewById(R.id.tipText);
         StarView starView = findViewById(R.id.starView);
         TextView textView = findViewById(R.id.tv);
         EditText editText = findViewById(R.id.editText);
+
+        tipTextView.setText("现在开通优惠 5 折");
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

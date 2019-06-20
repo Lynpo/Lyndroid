@@ -3,9 +3,11 @@ package com.lynpo.activitylifecycle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import com.lynpo.R;
+import com.lynpo.eternal.LynConstants;
 import com.lynpo.eternal.base.ui.BaseActivity;
 
 public class TaskBActivity extends BaseActivity {
@@ -19,12 +21,22 @@ public class TaskBActivity extends BaseActivity {
 
         Log.d("debug_info", TAG + "-onCreate");
 
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, TaskAActivity.class));
-            }
-        });
+        findViewById(R.id.button).setOnClickListener(v -> {
+//                    startActivity(new Intent(mContext, TaskCActivity.class));
+                    startActivityForResult(new Intent(mContext, TaskCActivity.class), LynConstants.ReqCode.CODE_2);
+//                    finish();
+                }
+        );
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(LynConstants.LOG_TAG, "onActivityResult,requestCode:" + requestCode);
+        if (data != null) {
+            int p = data.getIntExtra("data", -1);
+            Log.d(LynConstants.LOG_TAG, "onActivityResult,p:" + p);
+        }
     }
 
     @Override

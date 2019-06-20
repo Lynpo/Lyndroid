@@ -1,43 +1,31 @@
 package com.lynpo.activitylifecycle;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-
 import com.lynpo.R;
-import com.lynpo.eternal.LynConstants;
 import com.lynpo.eternal.base.ui.BaseActivity;
 
-public class TaskAActivity extends BaseActivity {
+public class TaskCActivity extends BaseActivity {
 
-    private static final String TAG = "TaskAActivity";
-
-    public static void start(Context context) {
-        Intent starter = new Intent(context, TaskAActivity.class);
-        context.startActivity(starter);
-    }
+    private static final String TAG = TaskCActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_a);
+        setContentView(R.layout.activity_task_c);
+
         Log.d("debug_info", TAG + "-onCreate");
 
-        findViewById(R.id.button).setOnClickListener(v ->
-                startActivityForResult(new Intent(mContext, TaskBActivity.class), LynConstants.ReqCode.CODE_1));
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.d(LynConstants.LOG_TAG, "onActivityResult,requestCode:" + requestCode);
-        if (data != null) {
-            int p = data.getIntExtra("data", -1);
-            Log.d(LynConstants.LOG_TAG, "onActivityResult,p:" + p);
-        }
+        findViewById(R.id.button).setOnClickListener(v -> {
+//                startActivity(new Intent(mContext, TaskBActivity.class))
+                    Intent data = new Intent();
+                    data.putExtra("DATA", 1);
+                setResult(RESULT_OK, data);
+                finish();
+            }
+        );
     }
 
     @Override

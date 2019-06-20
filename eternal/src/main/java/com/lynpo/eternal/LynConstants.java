@@ -8,4 +8,9 @@ package com.lynpo.eternal;
 public interface LynConstants {
 
     String LOG_TAG = "LOG_TAG";
+
+    interface ReqCode {
+        int CODE_1 = 0xC0D1;
+        int CODE_2 = 0xC0D2;
+    }
 }

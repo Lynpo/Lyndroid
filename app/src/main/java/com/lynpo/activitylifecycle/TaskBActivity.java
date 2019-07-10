@@ -19,7 +19,7 @@ public class TaskBActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_b);
 
-        Log.d("debug_info", TAG + "-onCreate");
+        Log.d(LynConstants.LOG_TAG, TAG + "-onCreate");
 
         findViewById(R.id.button).setOnClickListener(v -> {
 //                    startActivity(new Intent(mContext, TaskCActivity.class));
@@ -32,46 +32,52 @@ public class TaskBActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(LynConstants.LOG_TAG, "onActivityResult,requestCode:" + requestCode);
+        Log.d(LynConstants.LOG_TAG, TAG + "-onActivityResult,requestCode:" + requestCode);
         if (data != null) {
             int p = data.getIntExtra("data", -1);
-            Log.d(LynConstants.LOG_TAG, "onActivityResult,p:" + p);
+            Log.d(LynConstants.LOG_TAG, TAG + "-onActivityResult,p:" + p);
         }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.d(LynConstants.LOG_TAG, TAG + "-onNewIntent");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("debug_info", TAG + "-onStart");
+        Log.d(LynConstants.LOG_TAG, TAG + "-onStart");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d("debug_info", TAG + "-onRestart");
+        Log.d(LynConstants.LOG_TAG, TAG + "-onRestart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("debug_info", TAG + "-onResume");
+        Log.d(LynConstants.LOG_TAG, TAG + "-onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("debug_info", TAG + "-onPause");
+        Log.d(LynConstants.LOG_TAG, TAG + "-onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("debug_info", TAG + "-onStop");
+        Log.d(LynConstants.LOG_TAG, TAG + "-onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("debug_info", TAG + "-onDestroy");
+        Log.d(LynConstants.LOG_TAG, TAG + "-onDestroy");
     }
 }

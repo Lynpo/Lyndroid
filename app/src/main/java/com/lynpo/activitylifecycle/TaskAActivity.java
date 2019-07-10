@@ -33,11 +33,17 @@ public class TaskAActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(LynConstants.LOG_TAG, "onActivityResult,requestCode:" + requestCode);
+        Log.d(LynConstants.LOG_TAG, TAG + "-onActivityResult,requestCode:" + requestCode);
         if (data != null) {
             int p = data.getIntExtra("data", -1);
-            Log.d(LynConstants.LOG_TAG, "onActivityResult,p:" + p);
+            Log.d(LynConstants.LOG_TAG, TAG + "-onActivityResult,p:" + p);
         }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.d("debug_info", TAG + "-onNewIntent");
     }
 
     @Override

@@ -60,7 +60,7 @@
             android:launchMode="standard" />
         <activity
             android:name=".activitylifecycle.TaskBActivity"
-            android:launchMode="standard" />
+            android:launchMode="singleTask" />
         <activity android:name=".activitylifecycle.TaskCActivity" />
         <activity android:name=".temppage.IncludeViewTest" />
         <activity android:name=".view.constraintlayout.ConstraintLayoutActivity" />

@@ -47,4 +47,34 @@
         android:layout_marginStart="10dp"
         style="@style/TextNormal"
         tools:text="lynpo-schema://lynpo"/>
+    <TextView
+        android:id="@+id/tvUrl3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_schema2"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        tools:text="lynpo-schema://lynpo"
+        style="@style/TextNormal"/>
+    <TextView
+        android:id="@+id/tvUrl4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUrl3"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        tools:text="lynpo-schema://lynpo"
+        style="@style/TextNormal"/>
+    <TextView
+        android:id="@+id/tvUrl5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUrl4"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        tools:text="lynpo-schema://lynpo"
+        style="@style/TextNormal"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

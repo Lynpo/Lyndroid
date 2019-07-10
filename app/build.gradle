@@ -54,6 +54,7 @@ dependencies {
     implementation deps.rx_android
     implementation deps.gson
     implementation deps.okhttp3
+    implementation deps.okhttp3_mock
     implementation deps.okhttp_logging_interceptor
     implementation deps.retrofit.runtime
     implementation deps.retrofit.gson

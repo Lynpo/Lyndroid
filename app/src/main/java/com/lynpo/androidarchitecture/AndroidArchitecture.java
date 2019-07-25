@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.ViewManager;
 import android.view.WindowManager;
 
+import com.lynpo.eternal.LynConstants;
+
 /**
  * Create by fujw on 2018/4/1.
  * *
@@ -42,10 +44,10 @@ public class AndroidArchitecture {
     }
 
     public void theseNativeLayer() {
-        Log.d("debug_info", "OpenGL ES");   // 3D 绘图
-        Log.d("debug_info", "Libc");
-        Log.d("debug_info", "Media Framework");
-        Log.d("debug_info", "SQLite");
+        Log.d(LynConstants.LOG_TAG, "OpenGL ES");   // 3D 绘图
+        Log.d(LynConstants.LOG_TAG, "Libc");
+        Log.d(LynConstants.LOG_TAG, "Media Framework");
+        Log.d(LynConstants.LOG_TAG, "SQLite");
 
         // ...
     }

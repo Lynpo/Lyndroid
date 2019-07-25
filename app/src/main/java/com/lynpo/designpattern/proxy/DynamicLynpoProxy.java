@@ -3,6 +3,8 @@ package com.lynpo.designpattern.proxy;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.lynpo.eternal.LynConstants;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
@@ -25,7 +27,7 @@ public class DynamicLynpoProxy implements InvocationHandler {
         Object result = method.invoke(proxy, args);
         if (TextUtils.equals(method.getName(), "buy")) {
             // do something
-            Log.d("debug_info", "some one is buying");
+            Log.d(LynConstants.LOG_TAG, "some one is buying");
         }
         return null;
     }

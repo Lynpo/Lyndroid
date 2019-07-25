@@ -15,6 +15,7 @@ import com.lynpo.androidtouchevent.TouchOrClickActivity;
 import com.lynpo.base.adapter.BaseRclViewAdapter;
 import com.lynpo.base.adapter.CommonViewHolder;
 import com.lynpo.common.ClassHolder;
+import com.lynpo.eternal.LynConstants;
 import com.lynpo.eternal.base.ui.BaseActivity;
 import com.lynpo.framework.ipc.IPCClient;
 import com.lynpo.jni.JniInvokeActivity;
@@ -88,7 +89,7 @@ public class HomeActivity extends BaseActivity {
             }
         }
 
-        Log.d("DEBUG_INFO", "The " + index + "-th of fibonacci array is bigger than 5000, which is " + value);
+        Log.d(LynConstants.LOG_TAG, "The " + index + "-th of fibonacci array is bigger than 5000, which is " + value);
     }
 
     /**
@@ -128,18 +129,18 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void modeTest() {
-        Log.d("DEBUG_INFO", "0 % 30 = " + (0 % 30));
+        Log.d(LynConstants.LOG_TAG, "0 % 30 = " + (0 % 30));
     }
 
     private void towLongNumCompare() {
         long a = 1000;
         long b = 1000;
         if (a > b * 0.95) {
-            Log.d("DEBUG_INFO", String.format("%s > %s * 0.95", a, b));
+            Log.d(LynConstants.LOG_TAG, String.format("%s > %s * 0.95", a, b));
         } else if (a < b * 0.95) {
-            Log.d("DEBUG_INFO", String.format("%s < %s * 0.95", a, b));
+            Log.d(LynConstants.LOG_TAG, String.format("%s < %s * 0.95", a, b));
         } else {
-            Log.d("DEBUG_INFO", String.format("%s = %s * 0.95", a, b));
+            Log.d(LynConstants.LOG_TAG, String.format("%s = %s * 0.95", a, b));
         }
     }
 

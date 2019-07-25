@@ -10,9 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
-import com.lynpo.R;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.lynpo.R;
+import com.lynpo.eternal.LynConstants;
 
 public class MoveViewActivity extends AppCompatActivity {
 
@@ -25,12 +26,7 @@ public class MoveViewActivity extends AppCompatActivity {
 
         customView = findViewById(R.id.customView);
 
-        customView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                customView.move();
-            }
-        });
+        customView.setOnClickListener(v -> customView.move());
 
         customView.setAnimation(AnimationUtils.loadAnimation(this, R.anim.translate));
 
@@ -53,12 +49,7 @@ public class MoveViewActivity extends AppCompatActivity {
 //                .before(valueAnimator)
 //                .with(objectAnimator);
 
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                animation.getAnimatedValue();
-            }
-        });
+        valueAnimator.addUpdateListener(animation -> animation.getAnimatedValue());
         valueAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -97,7 +88,7 @@ public class MoveViewActivity extends AppCompatActivity {
 
         System.out.println("result: " + result);
         System.out.println("videoWidthHeightRatio: " + videoWidthHeightRatio);
-        Log.d("debug_info", "result: " + result);
-        Log.d("debug_info", "videoWidthHeightRatio: " + videoWidthHeightRatio);
+        Log.d(LynConstants.LOG_TAG, "result: " + result);
+        Log.d(LynConstants.LOG_TAG, "videoWidthHeightRatio: " + videoWidthHeightRatio);
     }
 }

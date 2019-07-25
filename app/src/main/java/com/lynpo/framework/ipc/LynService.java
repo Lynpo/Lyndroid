@@ -9,6 +9,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.lynpo.eternal.LynConstants;
+
 
 /**
  * Create by fujw on 2018/9/22.
@@ -20,7 +22,7 @@ public class LynService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d("debug_info", "LynService=====onBind");
+        Log.d(LynConstants.LOG_TAG, "LynService=====onBind");
         IInterface owner = new Plus();
         Binder binder = new Stub();
         binder.attachInterface(owner, Stub.ADD_DESCRIPTOR);

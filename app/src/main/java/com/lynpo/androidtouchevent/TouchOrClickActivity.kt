@@ -1,10 +1,11 @@
 package com.lynpo.androidtouchevent
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.lynpo.R
+import com.lynpo.eternal.LynConstants
 
 class TouchOrClickActivity : AppCompatActivity() {
 
@@ -14,14 +15,14 @@ class TouchOrClickActivity : AppCompatActivity() {
     }
 
     fun clickBottom(view: View) {
-        Log.d("debug_info", "Bottom view clicked.")
+        Log.d(LynConstants.LOG_TAG, "Bottom view clicked.")
     }
 
     fun clickParent(view: View) {
-        Log.d("debug_info", "Parent view clicked.")
+        Log.d(LynConstants.LOG_TAG, "Parent view clicked.")
     }
 
     fun clickTop(view: View) {
-        Log.d("debug_info", "top view clicked.")
+        Log.d(LynConstants.LOG_TAG, "top view clicked.")
     }
 }

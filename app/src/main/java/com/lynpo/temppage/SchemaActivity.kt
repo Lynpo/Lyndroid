@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.lynpo.R
+import com.lynpo.eternal.LynConstants
 import com.lynpo.eternal.base.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_schema.*
 
@@ -81,10 +82,10 @@ class SchemaActivity : BaseActivity(), View.OnClickListener {
 
         val url1 = "http://lynpo.com/path/name/id/121"
         val uri = Uri.parse(url1)
-        Log.d("debug_tag", "uri:schema:" + uri.scheme)  // http
-        Log.d("debug_tag", "uri:host:" + uri.host)  // lynpo.com
-        Log.d("debug_tag", "uri:path:" + uri.path)  // /path/name/id/121
-        Log.d("debug_tag", "uri:pathSegments:" + uri.pathSegments)  // [path, name, id, 121]
-        Log.d("debug_tag", "uri:lastPathSegment:" + uri.lastPathSegment)    // 121
+        Log.d(LynConstants.LOG_TAG, "uri:host:" + uri.host)  // lynpo.com
+        Log.d(LynConstants.LOG_TAG, "uri:schema:" + uri.scheme)  // http
+        Log.d(LynConstants.LOG_TAG, "uri:path:" + uri.path)  // /path/name/id/121
+        Log.d(LynConstants.LOG_TAG, "uri:pathSegments:" + uri.pathSegments)  // [path, name, id, 121]
+        Log.d(LynConstants.LOG_TAG, "uri:lastPathSegment:" + uri.lastPathSegment)    // 121
     }
 }

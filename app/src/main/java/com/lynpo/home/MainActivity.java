@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.lynpo.R;
+import com.lynpo.eternal.LynConstants;
 import com.lynpo.eternal.base.ui.BaseActivity;
 import com.lynpo.view.shape.TipTextView;
 import com.lynpo.widget.StarView;
@@ -45,17 +46,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                Log.d("debug_info", "beforeTextChanged");
+                Log.d(LynConstants.LOG_TAG, "beforeTextChanged");
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Log.d("debug_info", "onTextChanged");
+                Log.d(LynConstants.LOG_TAG, "onTextChanged");
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                Log.d("debug_info", "afterTextChanged");
+                Log.d(LynConstants.LOG_TAG, "afterTextChanged");
             }
         });
 //        int linearLayouttop = linearLayout.getTop();

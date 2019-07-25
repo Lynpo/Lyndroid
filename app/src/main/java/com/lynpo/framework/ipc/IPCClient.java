@@ -10,9 +10,10 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import android.util.Log;
 
-import com.lynpo.eternal.base.ui.BaseActivity;
-
 import androidx.annotation.Nullable;
+
+import com.lynpo.eternal.LynConstants;
+import com.lynpo.eternal.base.ui.BaseActivity;
 
 /**
  * Create by fujw on 2018/9/22.
@@ -33,7 +34,7 @@ public class IPCClient extends BaseActivity {
         bindService(intent, new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
-                Log.d("debug_info", "onServiceConnected");
+                Log.d(LynConstants.LOG_TAG, "onServiceConnected");
                 Parcel data = Parcel.obtain();
                 Parcel reply = Parcel.obtain();
 //                data.writeInterfaceToken(Stub.ADD_DESCRIPTOR);
@@ -43,7 +44,7 @@ public class IPCClient extends BaseActivity {
                     service.transact(Stub.ADD, data, reply, 0);
                     reply.readException();
                     int result = reply.readInt();
-//                    Log.d("debug_info", "Client::result:" + result);
+//                    Log.d(LynConstants.LOG_TAG, "Client::result:" + result);
                     printResult(result);
                 } catch (RemoteException ignored) {
 
@@ -58,6 +59,6 @@ public class IPCClient extends BaseActivity {
     }
 
     private void printResult(int result) {
-        Log.d("debug_info", "printResult:" + result);
+        Log.d(LynConstants.LOG_TAG, "printResult:" + result);
     }
 }

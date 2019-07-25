@@ -3,10 +3,11 @@ package com.lynpo.usualcase;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.lynpo.R;
-import com.lynpo.eternal.base.ui.BaseActivity;
-
 import androidx.annotation.Nullable;
+
+import com.lynpo.R;
+import com.lynpo.eternal.LynConstants;
+import com.lynpo.eternal.base.ui.BaseActivity;
 
 
 /**
@@ -34,13 +35,13 @@ public class UsualCaseActivity extends BaseActivity {
     static class Parent {
         void function() {
             int parent = 0;
-            Log.d("DEBUG_TAG", "parent:" + parent);
-            Log.d("DEBUG_TAG", "parent:" + parent);
+            Log.d(LynConstants.LOG_TAG, "parent:" + parent);
+            Log.d(LynConstants.LOG_TAG, "parent:" + parent);
             parent++;
             if (parent > 0) {
                 return;
             }
-            Log.d("DEBUG_TAG", "parent:" + parent);
+            Log.d(LynConstants.LOG_TAG, "parent:" + parent);
         }
     }
 
@@ -49,13 +50,13 @@ public class UsualCaseActivity extends BaseActivity {
         void function() {
             super.function();
             int child = 0;
-            Log.d("DEBUG_TAG", "child:" + child);
-            Log.d("DEBUG_TAG", "child:" + child);
+            Log.d(LynConstants.LOG_TAG, "child:" + child);
+            Log.d(LynConstants.LOG_TAG, "child:" + child);
             child++;
             if (child > 0) {
                 return;
             }
-            Log.d("DEBUG_TAG", "child:" + child);
+            Log.d(LynConstants.LOG_TAG, "child:" + child);
         }
     }
 }

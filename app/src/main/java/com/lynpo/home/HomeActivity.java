@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.JobIntentService;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -18,6 +19,8 @@ import com.lynpo.common.ClassHolder;
 import com.lynpo.eternal.LynConstants;
 import com.lynpo.eternal.base.ui.BaseActivity;
 import com.lynpo.framework.ipc.IPCClient;
+import com.lynpo.framework.platform.LynIntentService;
+import com.lynpo.framework.platform.LynJobIntentService;
 import com.lynpo.jni.JniInvokeActivity;
 import com.lynpo.kotlin.ReturnNullActivity;
 import com.lynpo.temppage.IncludeViewTest;
@@ -88,6 +91,18 @@ public class HomeActivity extends BaseActivity {
                 break;
             }
         }
+
+//        new Thread(()-> {
+//            try {
+//                Thread.sleep(3 * 10000);
+//            } catch (InterruptedException e) {
+//            }
+//
+//            startService(new Intent(mContext, LynIntentService.class));
+//        }).start();
+        startService(new Intent(mContext, LynIntentService.class));
+//        ContextCompat.startForegroundService(mContext, new Intent(mContext, LynIntentService.class));
+        JobIntentService.enqueueWork(mContext, LynJobIntentService.class, 1, new Intent(mContext, LynJobIntentService.class));
 
         Log.d(LynConstants.LOG_TAG, "The " + index + "-th of fibonacci array is bigger than 5000, which is " + value);
     }

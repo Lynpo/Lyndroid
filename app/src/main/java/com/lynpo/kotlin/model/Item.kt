@@ -6,4 +6,6 @@ package com.lynpo.kotlin.model
  **
  * Item
  */
-class Item
+class Item {
+    var name: String? = ""
+}

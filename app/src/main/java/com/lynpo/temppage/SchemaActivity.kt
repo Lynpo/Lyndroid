@@ -1,5 +1,6 @@
 package com.lynpo.temppage
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -44,7 +45,10 @@ class SchemaActivity : BaseActivity(), View.OnClickListener {
         }
 
         intent.data = uri
-        startActivity(intent)
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

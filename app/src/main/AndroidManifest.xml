@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
+        <activity android:name=".web.WebActivity"></activity>
         <activity android:name=".view.animation.AnimationActivity" />
         <activity android:name=".home.MainActivity">
             <intent-filter>
@@ -79,6 +80,9 @@
         <service
             android:name=".framework.ipc.LynService"
             android:process=":lyn" />
+        <service android:name=".framework.platform.LynIntentService" />
+        <service android:name=".framework.platform.LynJobIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
 
 </manifest>

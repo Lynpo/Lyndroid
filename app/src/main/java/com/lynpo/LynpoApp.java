@@ -10,8 +10,9 @@ import com.lynpo.thdlibs.dagger2.component.SwordmanComponent;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasActivityInjector;
+import dagger.android.HasAndroidInjector;
 
 
 /**
@@ -19,7 +20,7 @@ import dagger.android.HasActivityInjector;
  * *
  * LynpoApp
  */
-public class LynpoApp extends Application implements HasActivityInjector {
+public class LynpoApp extends Application implements HasAndroidInjector {
 
     ActivityComponent activityComponent;
     SwordmanComponent swordmanComponent;
@@ -45,13 +46,8 @@ public class LynpoApp extends Application implements HasActivityInjector {
         return activityComponent;
     }
 
-//    @Override
-//    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-//        return null;
-//    }
-
     @Override
-    public DispatchingAndroidInjector<Activity> activityInjector() {
-        return dispatchingAndroidInjector;
+    public AndroidInjector<Object> androidInjector() {
+        return null;
     }
 }

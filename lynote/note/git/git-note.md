@@ -23,3 +23,51 @@ tag 检出的分支只会有该 release 分支上的代码（直接在该分支�
 * Source tree 提交回滚：回滚一次 merge 操作可以完全回滚合入分支的屡次（所有差异）提交，
 可以放心使用。
 
+##### Git submodle
+
+###### 1. 创建
+
+[git-book: Starting with Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+```
+$ git submodule add https://github.com/chaconinc/DbConnector
+Cloning into 'DbConnector'...
+remote: Counting objects: 11, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 11 (delta 0), reused 11 (delta 0)
+Unpacking objects: 100% (11/11), done.
+Checking connectivity... done.
+```
+
+###### 2. push
+
+[Stackoverflow: push a submodle](https://stackoverflow.com/questions/5814319/git-submodule-push)
+
+```
+$ cd your_submodule
+$ git checkout master
+<hack,edit>
+$ git commit -a -m "commit in submodule"
+$ git push
+$ cd ..
+$ git add your_submodule
+$ git commit -m "Updated submodule"
+```
+
+###### 3. 删除
+
+[Stackoverflow: remove a submodle](https://stackoverflow.com/questions/1260748/how-do-i-remove-a-submodule)
+
+```
+1. Delete the relevant section from the .gitmodules file.
+2. Stage the .gitmodules changes:
+  git add .gitmodules
+3. Delete the relevant section from .git/config.
+4. Remove the submodule files from the working tree and index:
+  git rm --cached path_to_submodule (no trailing slash).
+5. Remove the submodule's .git directory:
+  rm -rf .git/modules/path_to_submodule
+6. Commit the changes:
+  git commit -m "Removed submodule <name>"
+7. Delete the now untracked submodule files:
+  rm -rf path_to_submodule
+```

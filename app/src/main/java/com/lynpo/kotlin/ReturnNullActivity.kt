@@ -58,7 +58,7 @@ class ReturnNullActivity : BaseActivity() {
         try {
             NullSample().setData(EmptyListForKotlinSample().data)
         } catch (e: Exception) {
-            Log.d(LynConstants.LOG_TAG, e.message)
+            Log.d(LynConstants.LOG_TAG, e.message.orEmpty())
         }
 
         // keywords test
@@ -72,7 +72,7 @@ class ReturnNullActivity : BaseActivity() {
             val nameExtra = intent.getStringExtra("name")
             Log.d(LynConstants.LOG_TAG, "ReturnNullActivity.initIntent:$itemNameExtra")
             Log.d(LynConstants.LOG_TAG, "ReturnNullActivity.initIntent:$nameExtra")
-            itemName = itemNameExtra
+            itemName = itemNameExtra.orEmpty()
             name = nameExtra
         } catch (e: Exception){
             Log.d(LynConstants.LOG_TAG, "ReturnNullActivity.initIntent:${e.message}")
@@ -81,7 +81,7 @@ class ReturnNullActivity : BaseActivity() {
         try {
             val nullSampleExtra = intent.getParcelableExtra<NullSample>("nullSample")
             Log.d(LynConstants.LOG_TAG, "ReturnNullActivity.initIntent:$nullSampleExtra")
-            nullSample = nullSampleExtra
+            nullSample = nullSampleExtra?: NullSample()
         } catch (e: Exception) {
             Log.d(LynConstants.LOG_TAG, "ReturnNullActivity.initIntent:${e.message}")
         }
@@ -89,7 +89,7 @@ class ReturnNullActivity : BaseActivity() {
         try {
             val nullSampleLateInitExtra = intent.getParcelableExtra<NullSample>("nullSampleLateInit")
             Log.d(LynConstants.LOG_TAG, "ReturnNullActivity.initIntent:$nullSampleLateInitExtra")
-            nullSampleLateInit = nullSampleLateInitExtra
+            nullSampleLateInit = nullSampleLateInitExtra?: NullSample()
             Log.d(LynConstants.LOG_TAG, "ReturnNullActivity.initIntent-use-nullSampleLateInit:$nullSampleLateInit")
         } catch (e: Exception) {
             Log.d(LynConstants.LOG_TAG, "ReturnNullActivity.initIntent:${e.message}")

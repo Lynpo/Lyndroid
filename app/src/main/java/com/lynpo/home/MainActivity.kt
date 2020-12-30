@@ -17,6 +17,7 @@ import com.lynpo.eternal.LynConstants
 import com.lynpo.eternal.base.ui.BaseActivity
 import com.lynpo.view.shape.TipTextView
 import com.lynpo.widget.StarView
+import io.flutter.embedding.android.FlutterActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), View.OnClickListener {
@@ -79,12 +80,12 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         textView.setOnClickListener(this)
 
         cornerShape.setOnClickListener {
-            AlertDialog.Builder(this)
-                    .setTitle("窗口")
-//                    .setView(TextView(this))
-                    .setView(TextView(this))
-                    .create()
-                    .show()
+            startActivity(
+                    FlutterActivity
+                            .withNewEngine()
+                            .initialRoute("/lyn_route")
+                            .build(this)
+            )
         }
     }
 

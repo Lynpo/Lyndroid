@@ -1,1 +1,6 @@
 include ':app', ':lynote', ':video', ':lynjava', ':eternal', ':daggersample'
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+  settingsDir,
+  'lyn_flutter/.android/include_flutter.groovy'
+))

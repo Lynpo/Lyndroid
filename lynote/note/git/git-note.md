@@ -71,3 +71,23 @@ $ git commit -m "Updated submodule"
 7. Delete the now untracked submodule files:
   rm -rf path_to_submodule
 ```
+
+##### git 日志统计
+
+[参考文档](https://gist.github.com/eyecatchup/3fb7ef0c0cbdb72412fc)
+
+```
+<!--  -->
+git --full-diff --stat <commit-39229ab5> <commit-b5afb337>
+git log --name-status |
+
+<!-- 统计文件数：新增，删除，变更 -->
+git log --shortstat --author="fujw" --since="Jan 1, 2020" | grep -E "fil(e|es) changed"
+git log --shortstat --author="fujw" --since="Jan 1, 2020" | grep -E "fil(e|es) changed" | awk '{files+=$1; inserted+=$4; deleted+=$6; delta+=$4-$6; ratio=deleted/inserted} END {printf "Commit stats:\n- Files changed (total)..  %s\n- Lines added (total)....  %s\n- Lines deleted (total)..  %s\n- Total lines (delta)....  %s\n- Add./Del. ratio (1:n)..  1 : %s\n", files, inserted, deleted, delta, ratio }' -
+
+<!-- 查询：按作者，日期，文件状态统计 -->
+git log --shortstat --author="fujw" --since="Dec 23, 2020" --before="Dec 26, 2020" | grep -E "fil(e|es) changed"
+git log --name-status --author="fujw" --since="Dec 24, 2020" | grep "A   "
+git log --stat --since="Dec 24, 2020"
+
+```

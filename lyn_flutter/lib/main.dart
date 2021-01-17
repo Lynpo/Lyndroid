@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boost/flutter_boost.dart';
+import 'simple_page_widgets.dart';
 
 // void main() => runApp(MyApp());
-void main() => runApp(_widgetForRoute("lyn_route"));
+void main() => runApp(SampleApp());
 
 Widget _widgetForRoute(String route) {
   switch (route) {
     default:
       return MaterialApp(
         home: Scaffold(
-          backgroundColor: const Color(0xFFD63031),//ARGB红色
-          body: Center(
-            child: Text(
-              'Hello from Flutter', //显示的文字
-              textDirection: TextDirection.ltr,
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.blue,
-              ),
-            ),
+          backgroundColor: const Color(0xFFF7C0D1), //ARGB红色
+          // appBar: AppBar(
+          //     title:
+          //         Text("多行文本", style: TextStyle(fontWeight: FontWeight.w900))),
+          drawer: Drawer(child: Center(child: Text("outlines"))),
+          body: ListView.builder(
+            itemCount: 2,
+            itemBuilder: (context, index) {
+              return Center(
+                child: Text(
+                  'the ${index + 1}-th: Hello from Flutter', //显示的文字
+                  textDirection: TextDirection.ltr,
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.black,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.bold),
+                ),
+              );
+            },
           ),
         ),
       );
   }
 }
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -67,14 +80,18 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+    if (_counter >= 2) {
+      runApp(_widgetForRoute("lyn_route"));
+    } else {
+      setState(() {
+        // This call to setState tells the Flutter framework that something has
+        // changed in this State, which causes it to rerun the build method below
+        // so that the display can reflect the updated values. If we changed
+        // _counter without calling setState(), then the build method would not be
+        // called again, and so nothing would appear to happen.
+        _counter++;
+      });
+    }
   }
 
   @override
@@ -127,5 +144,79 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class SampleApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<SampleApp> {
+  @override
+  void initState() {
+    super.initState();
+
+    FlutterBoost.singleton.registerPageBuilders(<String, PageBuilder>{
+      'embeded': (String pageName, Map<String, dynamic> params, String _) =>
+          EmbeddedFirstRouteWidget(),
+      'first': (String pageName, Map<String, dynamic> params, String _) => FirstRouteWidget(),
+      'firstFirst': (String pageName, Map<String, dynamic> params, String _) =>
+          FirstFirstRouteWidget(),
+      'second': (String pageName, Map<String, dynamic> params, String _) => SecondRouteWidget(),
+      'secondStateful': (String pageName, Map<String, dynamic> params, String _) =>
+          SecondStatefulRouteWidget(),
+      'tab': (String pageName, Map<String, dynamic> params, String _) => TabRouteWidget(),
+      'platformView': (String pageName, Map<String, dynamic> params, String _) =>
+          PlatformRouteWidget(),
+      'flutterFragment': (String pageName, Map<String, dynamic> params, String _) =>
+          FragmentRouteWidget(params),
+
+      ///可以在native层通过 getContainerParams 来传递参数
+      'flutterPage': (String pageName, Map<String, dynamic> params, String _) {
+        print('flutterPage params:$params');
+
+        return FlutterRouteWidget(params: params);
+      },
+    });
+    FlutterBoost.singleton.addBoostNavigatorObserver(TestBoostNavigatorObserver());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Flutter Boost example',
+        builder: FlutterBoost.init(postPush: _onRoutePushed),
+        home: Container(color: Colors.white));
+  }
+
+  void _onRoutePushed(
+      String pageName,
+      String uniqueId,
+      Map<String, dynamic> params,
+      Route<dynamic> route,
+      Future<dynamic> _,
+      ) {}
+}
+
+class TestBoostNavigatorObserver extends NavigatorObserver {
+  @override
+  void didPush(Route<dynamic> route, Route<dynamic> previousRoute) {
+    print('flutterboost#didPush');
+  }
+
+  @override
+  void didPop(Route<dynamic> route, Route<dynamic> previousRoute) {
+    print('flutterboost#didPop');
+  }
+
+  @override
+  void didRemove(Route<dynamic> route, Route<dynamic> previousRoute) {
+    print('flutterboost#didRemove');
+  }
+
+  @override
+  void didReplace({Route<dynamic> newRoute, Route<dynamic> oldRoute}) {
+    print('flutterboost#didReplace');
   }
 }

@@ -7,34 +7,21 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.MotionEvent
-import android.view.View
-import android.widget.EditText
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.lynpo.R
 import com.lynpo.eternal.LynConstants
 import com.lynpo.eternal.base.ui.BaseActivity
-import com.lynpo.view.shape.TipTextView
-import com.lynpo.widget.StarView
-import io.flutter.embedding.android.FlutterActivity
+import com.lynpo.flutter.PageRouter
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity(), View.OnClickListener {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        val constraintLayout = findViewById<ConstraintLayout>(R.id.parent)
-        //        LinearLayout linearLayout = findViewById(R.id.linearLayout);
-        val tipTextView = findViewById<TipTextView>(R.id.tipText)
-        val starView = findViewById<StarView>(R.id.starView)
-        val textView = findViewById<TextView>(R.id.tv)
-        val editText = findViewById<EditText>(R.id.editText)
 
-        tipTextView.setText("现在开通优惠 5 折")
+        tipText.setText("现在开通优惠 5 折")
 
         editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -55,20 +42,20 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         val left = starView.left
         val x = starView.x
         val y = starView.y
-        val textView_top = textView.top
-        val textView_left = textView.left
-        val textView_x = textView.x
-        val textView_y = textView.y
+        val tvTop = hello_world.top
+        val tvLeft = hello_world.left
+        val tvX = hello_world.x
+        val tvY = hello_world.y
         val parent = starView.parent
-        Log.d(DEBUG_INFO, "constraintLayout.hash:" + constraintLayout.hashCode())
+        Log.d(DEBUG_INFO, "constraintLayout.hash:" + parent.hashCode())
         //        Log.d(DEBUG_INFO, "linearLayout.hash:" + linearLayout.hashCode());
         Log.d(DEBUG_INFO, "starView.parent.hash:" + parent.hashCode())
         //        Log.d(DEBUG_INFO, "linearLayouttop:" + linearLayouttop + ", linearLayoutleft:" + linearLayoutleft);
         Log.d(DEBUG_INFO, "top:$top, left:$left, x:$x, y:$y")
-        Log.d(DEBUG_INFO, "textView_top:" + textView_top +
-                ", textView_left:" + textView_left +
-                ", textView_x:" + textView_x +
-                ", textView_y:" + textView_y)
+        Log.d(DEBUG_INFO, "textView_top:" + tvTop +
+                ", textView_left:" + tvLeft +
+                ", textView_x:" + tvX +
+                ", textView_y:" + tvY)
 
 //        VideoCapturer c = VideoCapturer.create(device);
 //        PeerConnectionFactory factory = new PeerConnectionFactory();
@@ -76,22 +63,42 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 //        VideoSource s = factory.createVideoSource(c, constraints);
 //        VideoTrack t = factory.createVideoTrack(trackName, s);
 //        localStream.addTrack(t);
-        starView.setOnClickListener(this)
-        textView.setOnClickListener(this)
+
+        starView.setOnClickListener {
+            start(mContext, HomeActivity::class.java.name)
+        }
+
+
+        val params: MutableMap<String, String> = mutableMapOf()
+        params["test1"] = "v_test1"
+        params["test2"] = "v_test2"
+        //Add some params if needed.
+        hello_world.setOnClickListener {
+            // 冷启动，耗时长
+/*
+            startActivity(FlutterActivity
+                    .withNewEngine()
+                    .initialRoute("/lyn_route")
+                    .build(this)
+            )
+*/
+            PageRouter.openPageByUrl(this, PageRouter.NATIVE_PAGE_URL, params)
+        }
 
         cornerShape.setOnClickListener {
-            startActivity(
-                    FlutterActivity
-                            .withNewEngine()
-                            .initialRoute("/lyn_route")
-                            .build(this)
+            // 用 cacheEngine 启动，很快
+/*
+            startActivity(FlutterActivity
+                    .withCachedEngine("lyn_f_engine")
+                    .backgroundMode(FlutterActivityLaunchConfigs.BackgroundMode.transparent)
+                    .build(this)
             )
+*/
+            PageRouter.openPageByUrl(this, PageRouter.FLUTTER_PAGE_URL, params)
         }
-    }
 
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.tv, R.id.starView -> start(mContext, HomeActivity::class.java.name)
+        page_entrance.setOnClickListener {
+            PageRouter.openPageByUrl(this, PageRouter.FLUTTER_FRAGMENT_PAGE_URL, params)
         }
     }
 

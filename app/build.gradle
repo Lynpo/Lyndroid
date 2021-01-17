@@ -45,6 +45,7 @@ dependencies {
     kapt deps.glide.compiler
     kapt deps.room.compiler
 
+    implementation project(':flutter_boost')
     implementation project(':eternal')
     implementation project(':video')
 }

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-// void main() => runApp(MyApp());
-void main() => runApp(_widgetForRoute("lyn_route"));
+void main() => runApp(MyApp());
+// void main() => runApp(_widgetForRoute("/lyn_route"));
 
 Widget _widgetForRoute(String route) {
   switch (route) {
     default:
       return MaterialApp(
         home: Scaffold(
-          backgroundColor: const Color(0xFFD63031),//ARGB红色
+          // backgroundColor: const Color(0xFFD63031),//ARGB红色
           body: Center(
             child: Text(
               'Hello from Flutter', //显示的文字
@@ -64,7 +65,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  // The app’s State class holds the current app state.
+  static const platform = const MethodChannel('com.lynpo.lyn_flutter/toast');
+
   int _counter = 0;
+  int _toast_result = 0;
+
+  @override
+  void setState(fn) {
+    super.setState(fn);
+  }
+
+  Future<void> _toastOnTiming() async {
+    // int _timing = 5;
+    setState(() {
+      _counter++;
+      // _toast_result = _counter;
+    });
+
+    try {
+      if (_counter >= 3) {
+        final int result = await platform.invokeMethod('toast', ["ab means a+b"]);
+        final List resultList = await platform.invokeListMethod('getList', ["a", "b"]);
+        final Map<String, dynamic> resultMap = await platform.invokeMapMethod('getQueryMap', ["a", "b"]);
+        _toast_result = result;
+        print("result:$result");
+      }
+
+    } on PlatformException catch (e) {
+      print("error:");
+
+    }
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -115,14 +148,15 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              'count:$_counter, result:$_toast_result',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        // onPressed: _incrementCounter,
+        onPressed: _toastOnTiming,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

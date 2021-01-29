@@ -18,6 +18,7 @@ import com.lynpo.base.adapter.CommonViewHolder;
 import com.lynpo.common.ClassHolder;
 import com.lynpo.eternal.LynConstants;
 import com.lynpo.eternal.base.ui.BaseActivity;
+import com.lynpo.flutter.FlutterSpringboardActivity;
 import com.lynpo.framework.ipc.IPCClient;
 import com.lynpo.framework.platform.LynIntentService;
 import com.lynpo.framework.platform.LynJobIntentService;
@@ -78,6 +79,7 @@ public class HomeActivity extends BaseActivity {
         items.add(new ClassHolder(DaggerSample2Activity.class));
         items.add(new ClassHolder(AnimationActivity.class));
         items.add(new ClassHolder(UsualCaseActivity.class));
+        items.add(new ClassHolder(FlutterSpringboardActivity.class));
 
         mAdapter.setData(items);
 

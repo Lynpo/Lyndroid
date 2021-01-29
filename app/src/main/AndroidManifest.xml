@@ -58,6 +58,8 @@
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize"
             />
+        <activity android:name=".flutter.FlutterSpringboardActivity"/>
+
         <activity android:name=".detail.DetailActivity" />
         <activity android:name=".view.MoveViewActivity" />
         <activity android:name=".view.CustomViewActivity" />

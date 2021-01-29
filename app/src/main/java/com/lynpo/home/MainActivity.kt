@@ -10,14 +10,13 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.lynpo.R
 import com.lynpo.eternal.LynConstants
 import com.lynpo.eternal.base.ui.BaseActivity
+import com.lynpo.flutter.FlutterSpringboardActivity
 import com.lynpo.view.shape.TipTextView
 import com.lynpo.widget.StarView
-import io.flutter.embedding.android.FlutterActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), View.OnClickListener {
@@ -80,12 +79,24 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         textView.setOnClickListener(this)
 
         cornerShape.setOnClickListener {
-            startActivity(
-                    FlutterActivity
-                            .withNewEngine()
-                            .initialRoute("/lyn_route")
-                            .build(this)
-            )
+            // https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen?tab=prewarm-engine-kotlin-tab
+//            startActivity(
+//                    // start with new engine
+////                    FlutterActivity
+////                            .withNewEngine()
+////                            .initialRoute("/lyn_route")
+////                            .build(this)
+//
+//                    // start with cached engine
+//                    // When using the withCachedEngine() factory method, pass the same ID that you
+//                    // used when caching the desired FlutterEngine.
+//                    FlutterActivity.withCachedEngine("1")
+//                            // To launch your FlutterActivity with a transparent background, pass
+//                            // the appropriate BackgroundMode to the IntentBuilder:
+//                            .backgroundMode(FlutterActivityLaunchConfigs.BackgroundMode.transparent)
+//                            .build(this)
+//            )
+            start(mContext, FlutterSpringboardActivity::class.java.name)
         }
     }
 

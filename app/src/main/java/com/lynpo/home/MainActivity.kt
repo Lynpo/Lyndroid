@@ -9,13 +9,16 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.lynpo.R
 import com.lynpo.eternal.LynConstants
 import com.lynpo.eternal.base.ui.BaseActivity
 import com.lynpo.flutter.FlutterSpringboardActivity
+import com.lynpo.view.shape.DuiConfigs
 import com.lynpo.view.shape.TipTextView
+import com.lynpo.view.shape.TriangleView
 import com.lynpo.widget.StarView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -34,6 +37,8 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         val editText = findViewById<EditText>(R.id.editText)
 
         tipTextView.setText("现在开通优惠 5 折")
+
+        addTriangleView()
 
         editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -98,6 +103,21 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 //            )
             start(mContext, FlutterSpringboardActivity::class.java.name)
         }
+    }
+
+    private fun addTriangleView() {
+        val t1 = TriangleView(this)
+        val t2 = TriangleView(this, DuiConfigs.Direction.UP)
+        val t3 = TriangleView(this, DuiConfigs.Direction.LEFT)
+        val t4 = TriangleView(this, DuiConfigs.Direction.RIGHT)
+        val lpH = LinearLayout.LayoutParams(resources.getDimensionPixelSize(R.dimen.dp_60), resources.getDimensionPixelSize(R.dimen.dp_30))
+        val lpV = LinearLayout.LayoutParams(resources.getDimensionPixelSize(R.dimen.dp_30), resources.getDimensionPixelSize(R.dimen.dp_60))
+        lpH.marginStart = resources.getDimensionPixelSize(R.dimen.dp_14)
+        lpV.marginStart = resources.getDimensionPixelSize(R.dimen.dp_14)
+        ll.addView(t1, lpH)
+        ll.addView(t2, lpH)
+        ll.addView(t3, lpV)
+        ll.addView(t4, lpV)
     }
 
     override fun onClick(v: View) {

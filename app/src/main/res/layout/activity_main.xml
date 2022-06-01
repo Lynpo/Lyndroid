@@ -31,6 +31,22 @@
         app:layout_constraintTop_toBottomOf="@id/tipText"
         android:layout_marginTop="@dimen/dp_8"/>
 
+    <FrameLayout
+        android:id="@+id/fl_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll"
+        android:layout_marginStart="@dimen/dp_20"/>
+
+    <FrameLayout
+        android:id="@+id/fl_bubble2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fl_bubble"
+        android:layout_marginStart="@dimen/dp_20"/>
+
     <TextView
         android:id="@+id/tv"
         android:layout_width="wrap_content"

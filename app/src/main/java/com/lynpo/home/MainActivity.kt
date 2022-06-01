@@ -15,10 +15,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.lynpo.R
 import com.lynpo.eternal.LynConstants
 import com.lynpo.eternal.base.ui.BaseActivity
+import com.lynpo.eternal.extend.dp2Pixel
+import com.lynpo.eternal.extend.text
 import com.lynpo.flutter.FlutterSpringboardActivity
-import com.lynpo.view.shape.DuiConfigs
-import com.lynpo.view.shape.TipTextView
-import com.lynpo.view.shape.TriangleView
+import com.lynpo.view.shape.*
 import com.lynpo.widget.StarView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -39,6 +39,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         tipTextView.setText("现在开通优惠 5 折")
 
         addTriangleView()
+        setupBubbleView()
 
         editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -105,11 +106,44 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
+    private fun setupBubbleView() {
+//        val bubbleView = bubbleView.inflate()
+        val text = TextView(this)
+        val text2 = TextView(this)
+        text.text("点击进入电影院观看")
+        text2.text("点击进入电影院观看")
+        val bubbleView = BubbleLayout.create(this)
+            .setBubbleView(text,
+                paddingHorizontal = dp2Pixel(dp = 8),
+                paddingVertical = dp2Pixel(4)
+            )
+            .setBubbleCornerRadius(dp2Pixel(8))
+            .setBubbleColorRes(R.color.colorAccent)
+            .build()
+        fl_bubble.addView(bubbleView)
+
+        BubbleBuilder.create(this)
+            .setBubbleView(text2,
+                paddingHorizontal = dp2Pixel(dp = 8),
+                paddingVertical = dp2Pixel(4)
+            )
+            .setBubbleCornerRadius(dp2Pixel(8))
+            .setBubbleColorRes(R.color.colorAccent)
+            .setBubbleArrowHorizontalOffset(0, dp2Pixel(20))
+            .buildInto(
+                fl_bubble2
+//                FrameLayout.LayoutParams(
+//                    FrameLayout.LayoutParams.WRAP_CONTENT,
+//                    FrameLayout.LayoutParams.WRAP_CONTENT
+//                )
+            )
+    }
+
     private fun addTriangleView() {
         val t1 = TriangleView(this)
-        val t2 = TriangleView(this, DuiConfigs.Direction.UP)
-        val t3 = TriangleView(this, DuiConfigs.Direction.LEFT)
-        val t4 = TriangleView(this, DuiConfigs.Direction.RIGHT)
+        val t2 = TriangleView(this, DuiConfigs.Direction.UP, R.color.colorAccent)
+        val t3 = TriangleView(this, DuiConfigs.Direction.LEFT, R.color.colorAccent)
+        val t4 = TriangleView(this, DuiConfigs.Direction.RIGHT, R.color.colorAccent)
         val lpH = LinearLayout.LayoutParams(resources.getDimensionPixelSize(R.dimen.dp_60), resources.getDimensionPixelSize(R.dimen.dp_30))
         val lpV = LinearLayout.LayoutParams(resources.getDimensionPixelSize(R.dimen.dp_30), resources.getDimensionPixelSize(R.dimen.dp_60))
         lpH.marginStart = resources.getDimensionPixelSize(R.dimen.dp_14)

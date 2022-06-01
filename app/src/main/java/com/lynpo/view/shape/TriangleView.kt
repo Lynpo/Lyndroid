@@ -1,9 +1,13 @@
 package com.lynpo.view.shape
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
+import androidx.annotation.ColorRes
 import com.lynpo.R
 import java.lang.Math.PI
 import kotlin.math.cos
@@ -19,16 +23,18 @@ class TriangleView constructor(
     private val mContext: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0,
+    private val colorRes: Int = R.color.colorAccent,
     private val direction: DuiConfigs.Direction = DuiConfigs.Direction.DOWN
 ) : View(mContext, attrs, defStyle) {
     val path: Path = Path()
     val p: Paint = Paint()
     private val rectF: RectF = RectF()
 
-    constructor(context: Context): this(context, DuiConfigs.Direction.DOWN)
-    constructor(context: Context, attrs: AttributeSet?): this(context, attrs, 0, DuiConfigs.Direction.DOWN)
-    constructor(context: Context, direction: DuiConfigs.Direction): this(context, null, direction)
-    constructor(context: Context, attrs: AttributeSet?, direction: DuiConfigs.Direction): this(context, attrs, 0, direction)
+    constructor(context: Context): this(context, null)
+    constructor(context: Context, attrs: AttributeSet?): this(context, attrs, 0, R.color.colorAccent, DuiConfigs.Direction.DOWN)
+
+    constructor(context: Context, @ColorRes colorRes: Int): this(context, DuiConfigs.Direction.DOWN, colorRes)
+    constructor(context: Context, direction: DuiConfigs.Direction, @ColorRes colorRes: Int): this(context, null, 0, colorRes, direction)
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -36,11 +42,11 @@ class TriangleView constructor(
         val pi = PI
         // 等边直角三角形
         // 底边长：
-        val bottomLineLen = (if (direction.directionHorizontal()) width else height).toFloat()
+        val bottomLineLen = (if (direction.isHorizontal()) width else height).toFloat()
         // 高，底边一半长度：用于绘制顶点坐标
         val h = bottomLineLen / 2f
         // 顶部圆弧宽度，固定值 2dp，不超过底边长
-        val arcWidth = context.resources.getDimensionPixelSize(R.dimen.dp_8).toFloat().coerceAtMost(bottomLineLen)
+        val arcWidth = context.resources.getDimensionPixelSize(R.dimen.dp_2).toFloat().coerceAtMost(bottomLineLen)
         // 顶部圆弧半径：
         val r = arcWidth / 2f / cos(pi / 4).toFloat()
         // 圆弧顶点，与三角形顶点距离
@@ -97,7 +103,7 @@ class TriangleView constructor(
             }
         }
         path.close()
-        p.color = Color.GREEN
+        p.color = mContext.getColor(colorRes)
         canvas.drawPath(path, p)
     }
 }

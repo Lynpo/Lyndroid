@@ -20,5 +20,5 @@ object DuiConfigs {
     }
 }
 
-fun DuiConfigs.Direction.directionHorizontal() = this in arrayOf(DuiConfigs.Direction.LEFT, DuiConfigs.Direction.RIGHT)
-fun DuiConfigs.Direction.directionVertical() = this in arrayOf(DuiConfigs.Direction.UP, DuiConfigs.Direction.DOWN)
+fun DuiConfigs.Direction.isHorizontal() = this in arrayOf(DuiConfigs.Direction.LEFT, DuiConfigs.Direction.RIGHT)
+fun DuiConfigs.Direction.isVertical() = this in arrayOf(DuiConfigs.Direction.UP, DuiConfigs.Direction.DOWN)

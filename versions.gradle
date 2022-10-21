@@ -24,8 +24,8 @@
 def build_versions = [:]
 build_versions.min_sdk = 26
 build_versions.target_sdk = 29
-build_versions.compile_sdk = 29
-build_versions.build_tools = "29.0.2"
+build_versions.compile_sdk = 32
+build_versions.build_tools = "32.0.0"
 ext.build_versions = build_versions
 
 static def addRepos(RepositoryHandler handler) {
@@ -40,21 +40,21 @@ ext.deps = [:]
 def versions = [:]
 versions.support = '1.0.0-beta01'
 versions.constraint_layout = '1.1.3'
-versions.dagger = "2.28.3"
+versions.dagger = "2.42"
 versions.guava = "29.0-jre"
 versions.rxjava2 = "2.2.19"
 versions.rx_android = "2.0.2"
 versions.retrofit = "2.9.0"
 versions.retrofit_rxjava_adapter = "2.4.0"
-versions.gson = "2.8.6"
-versions.okhttp3 = "4.8.1"
+versions.gson = "2.9.1"
+versions.okhttp3 = "4.10.0"
 versions.glide = "4.11.0"
 
-versions.android_gradle_plugin = '4.1.1'
-versions.kotlin = "1.3.72"
+versions.android_gradle_plugin = '7.3.1'
+versions.kotlin = '1.7.10'
 
 versions.arch_core = "1.1.1"
-versions.room = '2.0.0-beta01'
+versions.room = '2.4.2'
 versions.lifecycle = "1.1.1"
 versions.junit = "4.13"
 versions.espresso = '3.1.0-alpha4'
@@ -145,7 +145,7 @@ mockito.all = "org.mockito:mockito-all:$versions.mockito_all"
 deps.mockito = mockito
 
 def kotlin = [:]
-kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
 kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
 kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 deps.kotlin = kotlin

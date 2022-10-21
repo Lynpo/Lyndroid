@@ -15,7 +15,8 @@
         tools:replace="android:icon">
         <activity android:name=".web.WebActivity"></activity>
         <activity android:name=".view.animation.AnimationActivity" />
-        <activity android:name=".home.MainActivity">
+        <activity android:name=".home.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
